@@ -123,6 +123,7 @@
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\DiscoverController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WorksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -287,6 +288,7 @@
     <Content Include="Content\Personal - Doc\syntax-highlighter\styles\shThemeMDUltra.css" />
     <Content Include="Content\Personal - Doc\syntax-highlighter\styles\shThemeMidnight.css" />
     <Content Include="Content\Personal - Doc\syntax-highlighter\styles\shThemeRDark.css" />
+    <Content Include="Content\UserContent\css\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -447,6 +449,8 @@
     <Content Include="Views\Works\Index.cshtml" />
     <Content Include="Views\Discover\Culture.cshtml" />
     <Content Include="Views\Discover\Motivation.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
