@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -123,10 +131,56 @@
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\DiscoverController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WorksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Kategori.cs">
+      <DependentUpon>PersonalWPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Makale.cs">
+      <DependentUpon>PersonalWPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MakaleDetay.cs">
+      <DependentUpon>PersonalWPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PersonalWPModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PersonalWPModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PersonalWPModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PersonalWPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PersonalWPModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PersonalWPModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rol.cs">
+      <DependentUpon>PersonalWPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>PersonalWPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>PersonalWPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>PersonalWPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Uye.cs">
+      <DependentUpon>PersonalWPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UyeDetay.cs">
+      <DependentUpon>PersonalWPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Yorum.cs">
+      <DependentUpon>PersonalWPModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -294,6 +348,16 @@
     <Content Include="Content\UserContents\images\form-v8.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Models\PersonalWPModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PersonalWPModel.Context.cs</LastGenOutput>
+      <DependentUpon>PersonalWPModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\PersonalWPModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PersonalWPModel.edmx</DependentUpon>
+      <LastGenOutput>PersonalWPModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\css\.DS_Store" />
@@ -434,6 +498,13 @@
     <Content Include="Content\UserContents\fonts\Source_Sans_Pro\SourceSansPro-Regular.ttf" />
     <Content Include="Content\UserContents\fonts\Source_Sans_Pro\SourceSansPro-SemiBold.ttf" />
     <Content Include="Content\UserContents\fonts\Source_Sans_Pro\SourceSansPro-SemiBoldItalic.ttf" />
+    <EntityDeploy Include="Models\PersonalWPModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PersonalWPModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\PersonalWPModel.edmx.diagram">
+      <DependentUpon>PersonalWPModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -469,12 +540,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Security\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
