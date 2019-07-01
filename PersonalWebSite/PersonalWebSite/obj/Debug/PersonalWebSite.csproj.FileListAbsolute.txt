@@ -150,3 +150,7 @@ C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite
 C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\obj\Debug\PersonalWebSite.csproj.CopyComplete
 C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\obj\Debug\PersonalWebSite.dll
 C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\obj\Debug\PersonalWebSite.pdb
+C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\bin\EntityFramework.dll
+C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\bin\EntityFramework.SqlServer.dll
+C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\bin\EntityFramework.xml
+C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\bin\EntityFramework.SqlServer.xml

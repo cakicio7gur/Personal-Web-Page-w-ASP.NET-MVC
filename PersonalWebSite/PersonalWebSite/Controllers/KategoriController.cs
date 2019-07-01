@@ -6,22 +6,13 @@ using System.Web.Mvc;
 
 namespace PersonalWebSite.Controllers
 {
-    public class BlogController : Controller
+    public class KategoriController : Controller
     {
         Models.PersonalWebPageDBEntities db = new Models.PersonalWebPageDBEntities();
-
-        public ActionResult Index()
-        {
-            return View();
-        }
-        public ActionResult BlogDetail()
-        {
-            return View();
-        }
         [HttpGet]
-        public ActionResult BlogList()
+        public ActionResult KategoriList()
         {
-            var model = db.Makale.ToList();
+            var model = db.Kategori.ToList();
             return View(model);
         }
     }

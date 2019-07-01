@@ -131,6 +131,7 @@
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\DiscoverController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KategoriController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WorksController.cs" />
@@ -346,6 +347,7 @@
     <Content Include="Content\UserContents\css\style.css" />
     <Content Include="Content\UserContents\fonts\Source_Sans_Pro\OFL.txt" />
     <Content Include="Content\UserContents\images\form-v8.jpg" />
+    <Content Include="Content\UserList\main.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Models\PersonalWPModel.Context.tt">
@@ -535,12 +537,13 @@
     <Content Include="Views\Works\Index.cshtml" />
     <Content Include="Views\Discover\Culture.cshtml" />
     <Content Include="Views\Discover\Motivation.cshtml" />
-    <Content Include="Views\User\Register.cshtml" />
-    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Security\Login.cshtml" />
+    <Content Include="Views\Security\Register.cshtml" />
+    <Content Include="Views\User\UserList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Security\" />
+    <Folder Include="Views\Kategori\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
