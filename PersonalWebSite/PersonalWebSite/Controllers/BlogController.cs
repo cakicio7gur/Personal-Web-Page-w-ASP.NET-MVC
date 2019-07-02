@@ -13,7 +13,8 @@ namespace PersonalWebSite.Controllers
 
         public ActionResult BlogDetail()
         {
-            return View();
+            var model = db.Makale.ToList();
+            return View(model);
         }
         public ActionResult Index()
         {
