@@ -1,0 +1,190 @@
+﻿@model PersonalWebSite.Models.Makale
+@{
+    ViewBag.Title = "GetMakaleById";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Session["MakaleID"] = @Model.makaleID;
+    var db = new PersonalWebSite.Models.PersonalWebPageDBEntities();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/fav.png">
+    <!-- Author Meta -->
+    <meta name="author" content="colorlib">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>BlogDetail</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+</head>
+<body>
+    <!-- start banner Area -->
+    <section class="relative about-banner">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="about-content col-lg-12">
+                    <h1 class="text-white">
+                        Yazı İçeriği
+                    </h1>
+                    <p class="text-white link-nav"><a href="/Home/Index">Ana Sayfa </a>  <span class="lnr lnr-arrow-right"></span><a> Yazı İçeriği</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End banner Area -->
+    <!-- Start post-content Area -->
+    <section class="post-content-area single-post-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 posts-list">
+                    <div class="single-post row">
+                        <div class="col-lg-12">
+                            <div class="feature-img">
+                                <img class="img-fluid" src="~/Content/img/blog/feature-img1.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-3  col-md-3 meta-details">
+                            <ul class="tags">
+                                <li><a href="#">@Model.Kategori.kategori1</a></li>
+                            </ul>
+                            <div class="user-details row">
+                                <p class="user-name col-lg-12 col-md-12 col-6"><a href="#">Özgür Çakıcı</a> <span class="lnr lnr-user"></span></p>
+                                <p class="date col-lg-12 col-md-12 col-6"><a href="#">@Model.MakaleDetay.yayınlanmaTarihi.Value.ToString("dd MMMM yyyy")</a> <span class="lnr lnr-calendar-full"></span></p>
+                                <p class="view col-lg-12 col-md-12 col-6"><a href="#">@Model.MakaleDetay.goruntulenmeSayisi görüntülenme</a> <span class="lnr lnr-eye"></span></p>
+                                <p class="comments col-lg-12 col-md-12 col-6"><a href="#">6 Yorum</a> <span class="lnr lnr-bubble"></span></p>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-9">
+                            <h3 class="mt-20 mb-20">@Model.MakaleDetay.baslik</h3>
+                            <p class="excert">
+                                @Model.MakaleDetay.icerik
+                                Veri Bilimi, hiç şüphesiz günümüzün en popüler araştırma ve uygulama alanlarının başında geliyor. Doğası gereği disiplinlerarası bir alan olarak kabul edilmesi gereken Veri Bilimi’ni öğrenmek isteyenlerin sayısı da her geçen gün artıyor. Datajarlabs olarak, verdiğimiz Veri Bilimi eğitimleri sayesinde edindiğimiz tecrübeler ışığında, Veri Bilimi’ni öğrenmek isteyenlere yol göstermesi açısından bir yol haritası oluşturmaya ve takipçilerimizle paylaşmaya karar verdik.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="navigation-area">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                                <div class="thumb">
+                                    <a href="#"><img class="img-fluid" src="~/Content/img/blog/prev.jpg" alt=""></a>
+                                </div>
+                                <div class="arrow">
+                                    <a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
+                                </div>
+                                <div class="detials">
+                                    <p>Önceki</p>
+                                    <a href="#"><h4>Post Başlığı</h4></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                                <div class="detials">
+                                    <p>Sonraki</p>
+                                    <a href="#"><h4>Post Başlığı</h4></a>
+                                </div>
+                                <div class="arrow">
+                                    <a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
+                                </div>
+                                <div class="thumb">
+                                    <a href="#"><img class="img-fluid" src="~/Content/img/blog/next.jpg" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comments-area">
+                        <h4>5 Yorum</h4>
+                        <div class="comment-list">
+                            @foreach (var item in db.Yorum.ToList())
+                            {
+                             <div class="single-comment justify-content-between d-flex">
+                                <div class="user justify-content-between d-flex">
+                                    <div class="thumb">
+                                        <img src="~/Content/img/blog/c2.jpg" alt="">
+                                    </div>
+                                    <div class="desc">
+                                        <h5><a href="#">@item.Uye.adSoyad</a></h5>
+                                        <p class="date">@item.tarih.Value.ToString("dd MMMM yyyy") </p>
+                                        <p class="comment">
+                                            @item.icerik
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="reply-btn">
+                                    <a href="" class="btn-reply text-uppercase">Cevapla</a>
+                                </div>
+                             </div>
+                             }
+                        </div>
+                    </div>
+                    <div class="comment-form">
+                        <h4>Bir Yorum Ekle</h4>
+                        <form>
+                            <div class="form-group form-inline">
+                                <div class="form-group col-lg-6 col-md-12 name">
+                                    <input type="text" class="form-control" id="name" placeholder="İsminiz" onfocus="this.placeholder = ''" onblur="this.placeholder = 'İsminiz'">
+                                </div>
+                                <div class="form-group col-lg-6 col-md-12 email">
+                                    <input type="email" class="form-control" id="email" placeholder="E-Mailiniz" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-Mailiniz'">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="subject" placeholder="Konu" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Konu'">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control mb-10" rows="5" name="message" placeholder="Mesajınız" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mesajınız'" required=""></textarea>
+                            </div>
+                            <a href="#" class="primary-btn text-uppercase">Yorum Yap</a>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4 sidebar-widgets">
+                    <div class="widget-wrap">
+                        <div class="single-sidebar-widget popular-post-widget">
+                            <h4 class="popular-title">En Çok Okunanlar</h4>
+                            <div class="popular-post-list">
+                                @foreach (var item in db.Makale.ToList())
+                                {
+                                    <div class="single-post-list d-flex flex-row align-items-center">
+                                        <div class="thumb">
+                                            <img class="img-fluid" src="img/blog/pp1.jpg" alt="">
+                                        </div>
+                                        <div class="details">
+                                            <a href="#"><h6>@item.MakaleDetay.baslik</h6></a>
+                                            <p>@item.MakaleDetay.yayınlanmaTarihi.Value.ToString("dd MMMM yyyy")</p>
+                                        </div>
+                                    </div>
+                                }
+                                </div>
+                            </div>
+                            <div class="single-sidebar-widget ads-widget">
+                                <a href="#"><img class="img-fluid" src="~/Content/img/blog/ads-banner.jpg" alt=""></a>
+                            </div>
+                            <div class="single-sidebar-widget post-category-widget">
+                                <h4 class="category-title">Kategoriler</h4>
+                                @foreach (var item in db.Kategori.ToList())
+                                {
+                                <ul class="cat-list">
+                                    <li>
+                                        <a href="#" class="d-flex justify-content-between">
+                                            <p>@item.kategori1</p>
+                                            <p>3</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                                }
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End post-content Area -->
+</body>
+</html>

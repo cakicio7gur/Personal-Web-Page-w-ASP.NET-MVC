@@ -6,12 +6,12 @@ using System.Web.Mvc;
 
 namespace PersonalWebSite.Controllers
 {
-    public class WorksController : Controller
+    public class YorumController : Controller
     {
         Models.PersonalWebPageDBEntities db = new Models.PersonalWebPageDBEntities();
         public ActionResult Index()
         {
-            var model = db.Proje.ToList();
+            var model = db.Yorum.ToList();
             return View(model);
         }
     }

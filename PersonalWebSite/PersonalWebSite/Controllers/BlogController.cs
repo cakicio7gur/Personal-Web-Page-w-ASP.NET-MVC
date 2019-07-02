@@ -11,18 +11,18 @@ namespace PersonalWebSite.Controllers
     {
         Models.PersonalWebPageDBEntities db = new Models.PersonalWebPageDBEntities();
 
-        public ActionResult BlogDetail()
-        {
-            var model = db.Makale.ToList();
-            return View(model);
-        }
         public ActionResult Index()
         {
             var model = db.Makale.ToList();
             return View(model);
-
         }
-
+        public ActionResult GetMakaleById(int id)
+        {
+            var model = db.Makale.Find(id);
+            model.MakaleDetay.goruntulenmeSayisi++;
+            db.SaveChanges();
+            return View(model);
+        }
 
     }
 }

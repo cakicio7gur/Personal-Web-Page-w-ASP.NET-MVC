@@ -35,6 +35,7 @@ namespace PersonalWebSite.Models
         public virtual DbSet<Uye> Uye { get; set; }
         public virtual DbSet<UyeDetay> UyeDetay { get; set; }
         public virtual DbSet<Yorum> Yorum { get; set; }
+        public virtual DbSet<Proje> Proje { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

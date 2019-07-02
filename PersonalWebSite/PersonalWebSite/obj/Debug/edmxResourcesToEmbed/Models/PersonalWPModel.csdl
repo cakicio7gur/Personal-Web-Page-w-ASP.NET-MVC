@@ -219,6 +219,7 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="Proje" EntityType="PersonalWebPageDBModel.Proje" />
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -231,4 +232,13 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
+  <EntityType Name="Proje">
+    <Key>
+      <PropertyRef Name="projeID" />
+    </Key>
+    <Property Name="projeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="projeBaslik" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="projeLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="projeResim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

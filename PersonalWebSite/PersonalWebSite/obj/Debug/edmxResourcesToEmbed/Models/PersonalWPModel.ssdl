@@ -26,6 +26,15 @@
     <Property Name="yayınlanmaTarihi" Type="date" />
     <Property Name="goruntulenmeSayisi" Type="int" />
   </EntityType>
+  <EntityType Name="Proje">
+    <Key>
+      <PropertyRef Name="projeID" />
+    </Key>
+    <Property Name="projeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="projeBaslik" Type="nvarchar" MaxLength="100" />
+    <Property Name="projeLink" Type="nvarchar" MaxLength="500" />
+    <Property Name="projeResim" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="Rol">
     <Key>
       <PropertyRef Name="rolID" />
@@ -179,6 +188,7 @@
     <EntitySet Name="Kategori" EntityType="Self.Kategori" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Makale" EntityType="Self.Makale" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MakaleDetay" EntityType="Self.MakaleDetay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Proje" EntityType="Self.Proje" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Uye" EntityType="Self.Uye" Schema="dbo" store:Type="Tables" />
