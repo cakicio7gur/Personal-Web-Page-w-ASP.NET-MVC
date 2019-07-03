@@ -49,26 +49,30 @@
                     <div class="title text-center">
                         <h1 class="mb-10">Üzerinde Çalıştığım Projeler</h1>
                         <p>Üzerinde çalıştığım projeleri daha detaylı incelemek için tıklayabilirsiniz.</p>
+                        <div id="userbutton">
+                            <a href="/Works/YeniProje" class="primary-btn text-uppercase">+ YENİ PROJE EKLE</a>
+                        </div>
                     </div>
                 </div>
             </div>
+
 
             <div class="filters-content">
                 <div class="row grid">
                     @foreach (var item in Model)
                     {
-                    <div class="single-portfolio col-sm-4 all printing">
-                        <div class="relative">
-                            <div class="thumb">
-                                <div class="overlay overlay-bg"></div>
-                                <img class="image img-fluid" src=@Url.Content(item.projeResim) alt="">
+                        <div class="single-portfolio col-sm-4 all printing">
+                            <div class="relative">
+                                <div class="thumb">
+                                    <div class="overlay overlay-bg"></div>
+                                    <img class="image img-fluid" src=@Url.Content(item.projeResim) alt="">
+                                </div>
+                            </div>
+                            <div class="p-inner">
+                                <h4>@item.projeBaslik</h4>
+                                <a href="@item.projeLink" target="_blank" class="cat">Projeye git...</a>
                             </div>
                         </div>
-                        <div class="p-inner">
-                            <h4>@item.projeBaslik</h4>
-                            <a href="@item.projeLink" target="_blank" class="cat">Projeye git...</a>
-                        </div>
-                    </div>
                     }
                 </div>
             </div>
