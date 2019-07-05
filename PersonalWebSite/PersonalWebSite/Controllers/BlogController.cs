@@ -23,6 +23,12 @@ namespace PersonalWebSite.Controllers
             db.SaveChanges();
             return View(model);
         }
+        public ActionResult GetMakaleByKategori(int id)
+        {
+            var makale = db.Makale.Where(x => x.kategoriID == id);
+
+            return View("Index", makale);
+        }
 
     }
 }

@@ -45,6 +45,7 @@ namespace PersonalWebSite.Controllers
             ud.kullaniciAdi = f["kullaniciAdi"].Trim();
             ud.eMail = f["eMail"].Trim();
             ud.sifre = f["sifre"].Trim();
+            ud.fotograf = "user.png";
             db.UyeDetay.Add(ud);
 
             db.SaveChanges();
@@ -55,10 +56,21 @@ namespace PersonalWebSite.Controllers
             var user = db.Uye.Find(id);
             return View("UserProfile", user);
         }
-        public ActionResult UpdateUser(Uye uye)
+
+        [HttpPost]
+        public ActionResult UpdateUser(Uye uye,HttpPostedFileBase fotograf)
         {
             var UpdateModel = db.Uye.Find(uye.uyeID);
-
+            if(fotograf != null)
+            {
+                WebImage Img = new WebImage(fotograf.InputStream);
+                FileInfo fotoinfo = new FileInfo(fotograf.FileName);
+                string newFoto = Guid.NewGuid().ToString() + fotoinfo.Extension;
+                Img.Resize(120,120);
+                Img.Save("~/Upload/UserProfilePhotos/" + newFoto);
+                UpdateModel.UyeDetay.fotograf = newFoto;
+                db.SaveChanges();
+            }
             UpdateModel.adSoyad = uye.adSoyad;
             UpdateModel.uyeDetayBilgiID = uye.uyeDetayBilgiID;
             UpdateModel.UyeDetay.kullaniciAdi = uye.UyeDetay.kullaniciAdi;

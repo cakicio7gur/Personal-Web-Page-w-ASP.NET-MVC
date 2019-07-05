@@ -41,42 +41,36 @@
         </div>
     </section>
     <!-- End banner Area -->
-    <!-- Start portfolio-area Area -->
-    <section class="portfolio-area section-gap" id="portfolio">
+    <section class="services-area section-gap">
         <div class="container">
             <div class="row d-flex justify-content-center">
-                <div class="menu-content pb-70 col-lg-8">
+                <div class="menu-content  col-lg-7">
                     <div class="title text-center">
                         <h1 class="mb-10">Üzerinde Çalıştığım Projeler</h1>
-                        <p>Üzerinde çalıştığım projeleri daha detaylı incelemek için tıklayabilirsiniz.</p>
+                        <p>
+                            Üzerinde çalıştığım projeleri daha detaylı incelemek için tıklayabilirsiniz.
+                        </p>
                         <div id="userbutton">
                             <a href="/Works/YeniProje" class="primary-btn text-uppercase">+ YENİ PROJE EKLE</a>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-            <div class="filters-content">
-                <div class="row grid">
-                    @foreach (var item in Model)
-                    {
-                        <div class="single-portfolio col-sm-4 all printing">
-                            <div class="relative">
-                                <div class="thumb">
-                                    <div class="overlay overlay-bg"></div>
-                                    <img class="image img-fluid" src=@Url.Content(item.projeResim) alt="">
-                                </div>
-                            </div>
-                            <div class="p-inner">
-                                <h4>@item.projeBaslik</h4>
-                                <a href="@item.projeLink" target="_blank" class="cat">Projeye git...</a>
-                            </div>
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-md-6"> 
+                        <div class="single-services">
+                            <span class="lnr lnr-laptop-phone"></span>
+                            <a href="@item.projeLink" target="_blank"><h4>@item.projeBaslik</h4></a>
+                            <a>
+                                Github üzerinde incelemek için projeye tıklayınız.
+                            </a>
                         </div>
-                    }
-                </div>
-            </div>
+                    </div>
+                }
 
+            </div>
         </div>
     </section>
 </body>

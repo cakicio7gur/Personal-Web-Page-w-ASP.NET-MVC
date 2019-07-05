@@ -145,7 +145,6 @@ C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite
 C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\bin\Newtonsoft.Json.xml
 C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\bin\Antlr3.Runtime.pdb
 C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\obj\Debug\PersonalWebSite.csprojAssemblyReference.cache
 C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\obj\Debug\PersonalWebSite.csproj.CoreCompileInputs.cache
 C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\obj\Debug\PersonalWebSite.csproj.CopyComplete
 C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\obj\Debug\PersonalWebSite.dll
@@ -154,3 +153,4 @@ C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite
 C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\bin\EntityFramework.SqlServer.dll
 C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\bin\EntityFramework.xml
 C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\bin\EntityFramework.SqlServer.xml
+C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\obj\Debug\PersonalWebSite.csprojAssemblyReference.cache

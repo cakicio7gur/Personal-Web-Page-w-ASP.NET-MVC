@@ -26,33 +26,34 @@
         <div class="container">
             <div class="comment-form">
                 <div class="single-sidebar-widget user-info-widget">
-                    <img src="/Content/img/blog/user-info.png" alt="">
+                    <img src="~/Upload/UserProfilePhotos/@Model.UyeDetay.fotograf">
                 </div>
-                <h4>Kullanıcı Bilgileri</h4>
-                @using (Html.BeginForm("UpdateUser", "User", FormMethod.Post))
+
+                @using (Html.BeginForm("UpdateUser", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
-                <form class="form-group" method="post">
-                    <div class="form-group">
-                        <label>Profil Fotoğrafı Seç:</label>
-                        <input type="file" name="fotograf" accept=".jpg,.png,.JPG,.jpeg" />
-                    </div>
+                    <h4>@Model.adSoyad</h4>
+                    <form class="form-group" method="post">
+                        <div class="form-group">
+                            <label>Profil Fotoğrafı Seç:</label>
+                            <input type="file" name="fotograf" accept=".jpg,.png,.JPG,.jpeg" id="fotograf"/>
+                        </div>
                         @Html.HiddenFor(m => m.uyeID)
-                        @Html.HiddenFor(m => m.uyeDetayBilgiID);
-                        @Html.HiddenFor(m => m.rolID);
-                    <div class="form-group">
-                        @Html.TextBoxFor(m => m.adSoyad, new { @class = "form-control", })
-                    </div>
-                    <div class="form-group">
-                        @Html.TextBoxFor(m => m.UyeDetay.kullaniciAdi, new { @class = "form-control", placeholder = "Username" })
-                    </div>
-                    <div class="form-group">
-                        @Html.TextBoxFor(m => m.UyeDetay.eMail, new { @class = "form-control", placeholder = "E-Mail" })
-                    </div>
-                    <div class="form-group">
-                        @Html.TextBoxFor(m => m.UyeDetay.sifre, new { @class = "form-control", placeholder = "Şifre", type = "password" })
-                    </div>
-                    <button class="primary-btn text-uppercase">GÜNCELLE</button>
-                </form>
+                        @Html.HiddenFor(m => m.uyeDetayBilgiID)
+                        @Html.HiddenFor(m => m.rolID)
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.adSoyad, new { @class = "form-control", })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.UyeDetay.kullaniciAdi, new { @class = "form-control", placeholder = "Username" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.UyeDetay.eMail, new { @class = "form-control", placeholder = "E-Mail" })
+                        </div>
+                        <div class="form-group">
+                            @Html.PasswordFor(m => m.UyeDetay.sifre, new { @class = "form-control", placeholder = "Password" })
+                        </div>
+                        <button class="primary-btn text-uppercase">GÜNCELLE</button>
+                    </form>
                 }
             </div>
         </div>

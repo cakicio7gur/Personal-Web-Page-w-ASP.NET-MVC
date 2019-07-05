@@ -1,0 +1,57 @@
+﻿@model PersonalWebSite.Models.Makale
+@{
+    ViewBag.Title = "Blog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Blog</h2>
+
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/fav.png">
+    <!-- Author Meta -->
+    <meta name="author" content="colorlib">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+</head>
+<body>
+    <section class="post-content-area single-post-area">
+        <div class="container">
+            <div class="comment-form">
+                <div class="single-sidebar-widget user-info-widget">
+                    <img src="~/Upload/WorkPhotos/blog.jpg">
+                </div>
+                @using (Html.BeginForm("NewBlog", "AdminBlog", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <form class="form-group" method="post">
+                        <div class="form-group" style="margin-top:10px">
+                            <label>Makale Fotoğrafı Seç:</label>
+                            <input type="file" name="fotograf" accept=".jpg,.png,.JPG,.jpeg" id="fotograf" />
+                        </div>
+                        @Html.HiddenFor(m => m.makaleID)
+                        @Html.HiddenFor(m => m.kategoriID)
+                        @Html.HiddenFor(m => m.makaleDetayID)
+                        <div class="form-group form-inline">
+                            @Html.TextBoxFor(m => m.MakaleDetay.baslik, new { @class = "form-control col-lg-12 col-md-12 name", placeholder = "Makale Başlığı" })
+                        </div>
+                        <div class="form-group form-inline">
+                            @Html.TextAreaFor(m => m.MakaleDetay.icerik, new { @class = "form-control col-lg-12 col-md-12 name", rows = "10", placeholder = "Makale İçeriği" })
+                        </div>
+                        <button class="primary-btn text-uppercase">KAYDET</button>
+                    </form>
+                }
+            </div>
+        </div>
+    </section>
+</body>
+</html>
