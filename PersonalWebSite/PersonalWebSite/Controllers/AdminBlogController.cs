@@ -23,6 +23,13 @@ namespace PersonalWebSite.Controllers
         
         public ActionResult BlogDetail(int id)
         {
+            List<SelectListItem> kategorilerbd = (from i in db.Kategori.ToList()
+                                                select new SelectListItem
+                                                {
+                                                    Text = i.kategori1,
+                                                    Value = i.kategoriID.ToString()
+                                                }).ToList();
+            ViewBag.ktgrbd = kategorilerbd;
             var blog = db.Makale.Find(id);
             return View("BlogDetail", blog);
         }
@@ -31,6 +38,9 @@ namespace PersonalWebSite.Controllers
         public ActionResult UpdateBlog(Makale makale,HttpPostedFileBase fotograf)
         {
             var UpdateModel = db.Makale.Find(makale.makaleID);
+            var ktgr = db.Kategori.Where(m => m.kategoriID == makale.Kategori.kategoriID).FirstOrDefault();
+            makale.kategoriID = ktgr.kategoriID;
+            UpdateModel.kategoriID = makale.kategoriID;
             if (fotograf != null)
             {
                 WebImage Img = new WebImage(fotograf.InputStream);
@@ -45,7 +55,6 @@ namespace PersonalWebSite.Controllers
             UpdateModel.MakaleDetay.icerik = makale.MakaleDetay.icerik;
             UpdateModel.MakaleDetay.yayınlanmaTarihi = makale.MakaleDetay.yayınlanmaTarihi;
             UpdateModel.MakaleDetay.goruntulenmeSayisi = makale.MakaleDetay.goruntulenmeSayisi;
-            UpdateModel.kategoriID = makale.kategoriID;
             UpdateModel.makaleDetayID = makale.makaleDetayID;
             db.SaveChanges();
             return View("BlogDetail", UpdateModel);
@@ -54,13 +63,23 @@ namespace PersonalWebSite.Controllers
         [HttpGet]
         public ActionResult Blog()
         {
+            List<SelectListItem> kategoriler = (from i in db.Kategori.ToList()
+                                                select new SelectListItem
+                                                {
+                                                    Text = i.kategori1,
+                                                    Value = i.kategoriID.ToString()
+                                                }).ToList();
+            ViewBag.ktgr = kategoriler;
             return View();
         }
 
         [HttpPost]
         public ActionResult Blog(Makale makale, HttpPostedFileBase fotograf)
         {
-            var NewModel = db.Makale.Find(makale.makaleID);
+            var ktgr = db.Kategori.Where(m => m.kategoriID == makale.Kategori.kategoriID).FirstOrDefault();
+            makale.Kategori = ktgr;
+            makale.MakaleDetay.yayınlanmaTarihi = DateTime.Now;
+            makale.MakaleDetay.goruntulenmeSayisi = 0;
             if (fotograf != null)
             {
                 WebImage Img = new WebImage(fotograf.InputStream);
@@ -68,44 +87,36 @@ namespace PersonalWebSite.Controllers
                 string newFoto = Guid.NewGuid().ToString() + fotoinfo.Extension;
                 Img.Resize(750, 350);
                 Img.Save("~/Upload/WorkPhotos/" + newFoto);
-                NewModel.MakaleDetay.fotograf = newFoto;
+                makale.MakaleDetay.fotograf = newFoto;
                 db.SaveChanges();
             }
-            NewModel.MakaleDetay.baslik = makale.MakaleDetay.baslik;
-            NewModel.MakaleDetay.icerik = makale.MakaleDetay.icerik;
-            NewModel.MakaleDetay.yayınlanmaTarihi = DateTime.Now;
-            NewModel.MakaleDetay.goruntulenmeSayisi = 0;
-            NewModel.kategoriID = makale.kategoriID;
-            NewModel.makaleDetayID = makale.makaleDetayID;
-            db.Makale.Add(NewModel);
-            db.SaveChanges();
-            return View("BlogDetail", NewModel);
-        }
-        /*public ActionResult UpdateBlog(int id)
-        {
-            var UpdateBlog = db.Makale.Find(id);
-            return View("NewBlog", UpdateBlog);
-
-        }
-
-        public ActionResult RemoveBlog(int id)
-        {
-            var RemoveBlog = db.Makale.Find(id);
-            if (RemoveBlog != null)
-            {
-                foreach (var yorum in RemoveBlog.Yorum.ToList())
-                {
-                    db.Yorum.Remove(yorum);
-                }
-                db.Makale.Remove(RemoveBlog);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
             else
             {
-                return RedirectToAction("Index");
+                makale.MakaleDetay.fotograf = "blog.jpg";
+                db.SaveChanges();
             }
-        }*/
+            db.Makale.Add(makale);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        /*public ActionResult RemoveBlog(int id)
+         {
+             var RemoveBlog = db.Makale.Find(id);
+             if (RemoveBlog != null)
+             {
+                 foreach (var yorum in RemoveBlog.Yorum.ToList())
+                 {
+                     db.Yorum.Remove(yorum);
+                 }
+                 db.Makale.Remove(RemoveBlog);
+                 db.SaveChanges();
+                 return RedirectToAction("Index");
+             }
+
+             else
+             {
+                 return RedirectToAction("Index");
+             }
+         }*/
     }
 }

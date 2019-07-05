@@ -32,32 +32,36 @@
                 </div>
                 @using (Html.BeginForm("UpdateBlog", "AdminBlog", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
-                    <form class="form-group" method="post">
-                        <div class="form-group" style="margin-top:10px">
-                            <label>Makale Fotoğrafı Seç:</label>
-                            <input type="file" name="fotograf" accept=".jpg,.png,.JPG,.jpeg" id="fotograf" />
-                        </div>
-                        @Html.HiddenFor(m => m.makaleID)
-                        @Html.HiddenFor(m => m.kategoriID)
-                        @Html.HiddenFor(m => m.makaleDetayID)
-                        <div class="form-group form-inline">
-                            <a class="col-lg-2 col-md-12 name"><b>Makale Başlığı :</b></a>
-                            @Html.TextBoxFor(m => m.MakaleDetay.baslik, new { @class = "form-control col-lg-10 col-md-12 name", placeholder = "Makale Başlığı" })
-                        </div>
-                        <div class="form-group form-inline">
-                            <a class="col-lg-2 col-md-12 name"><b>Görüntülenme Sayısı :</b></a>
-                            @Html.TextBoxFor(m => m.MakaleDetay.goruntulenmeSayisi, new { @class = "form-control col-lg-10 col-md-12 name", @readonly = "readonly", placeholder = "Görüntülenme Sayısı" })
-                        </div>
-                        <div class="form-group form-inline">
-                            <a class="col-lg-2 col-md-12 name"><b>Yayınlanma Tarihi :</b></a>
-                            @Html.TextBoxFor(m => m.MakaleDetay.yayınlanmaTarihi, new { @class = "form-control col-lg-10 col-md-12 name", @readonly = "readonly", placeholder = "Yayınlanma Tarihi" })
-                        </div>
-                        <div class="form-group form-inline">
-                            <a class="col-lg-2 col-md-12 name"><b>Makale İçeriği :</b></a>
-                            @Html.TextAreaFor(m => m.MakaleDetay.icerik, new { @class = "form-control col-lg-10 col-md-12 name", rows = "10", placeholder = "Makale İçeriği" })
-                        </div>
-                        <button class="primary-btn text-uppercase">GÜNCELLE</button>
-                    </form>
+                <form class="form-group" method="post">
+                    <div class="form-group" style="margin-top:10px">
+                        <label>Makale Fotoğrafı Seç:</label>
+                        <input type="file" name="fotograf" accept=".jpg,.png,.JPG,.jpeg" id="fotograf" />
+                    </div>
+                    @Html.HiddenFor(m => m.makaleID)
+                    @Html.HiddenFor(m => m.kategoriID)
+                    @Html.HiddenFor(m => m.makaleDetayID)
+                    <div class="form-group col-lg-12 col-md-12 form-inline">
+                        <a class="col-lg-2 col-md-12 name"><b>Kategori :</b></a>
+                        @Html.DropDownListFor(m => m.kategoriID, (List<SelectListItem>)ViewBag.ktgrbd, new { @class = "col-lg-10 col-md-1", })
+                    </div>
+                    <div class="form-group form-inline">
+                        <a class="col-lg-2 col-md-12 name"><b>Makale Başlığı :</b></a>
+                        @Html.TextBoxFor(m => m.MakaleDetay.baslik, new { @class = "form-control col-lg-10 col-md-12 name", placeholder = "Makale Başlığı" })
+                    </div>
+                    <div class="form-group form-inline">
+                        <a class="col-lg-2 col-md-12 name"><b>Görüntülenme Sayısı :</b></a>
+                        @Html.TextBoxFor(m => m.MakaleDetay.goruntulenmeSayisi, new { @class = "form-control col-lg-10 col-md-12 name", @readonly = "readonly", placeholder = "Görüntülenme Sayısı" })
+                    </div>
+                    <div class="form-group form-inline">
+                        <a class="col-lg-2 col-md-12 name"><b>Yayınlanma Tarihi :</b></a>
+                        @Html.TextBoxFor(m => m.MakaleDetay.yayınlanmaTarihi, new { @class = "form-control col-lg-10 col-md-12 name", @readonly = "readonly", placeholder = "Yayınlanma Tarihi" })
+                    </div>
+                    <div class="form-group form-inline">
+                        <a class="col-lg-2 col-md-12 name"><b>Makale İçeriği :</b></a>
+                        @Html.TextAreaFor(m => m.MakaleDetay.icerik, new { @class = "form-control col-lg-10 col-md-12 name", rows = "10", placeholder = "Makale İçeriği" })
+                    </div>
+                    <button class="primary-btn text-uppercase">GÜNCELLE</button>
+                </form>
                 }
             </div>
         </div>

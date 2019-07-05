@@ -667,7 +667,6 @@
     <Content Include="Views\User\UserProfile.cshtml" />
     <Content Include="Views\AdminBlog\Index.cshtml" />
     <Content Include="Views\AdminBlog\BlogDetail.cshtml" />
-    <Content Include="Views\AdminBlog\NewBlog.cshtml" />
     <Content Include="Views\AdminBlog\Blog.cshtml" />
   </ItemGroup>
   <ItemGroup>
