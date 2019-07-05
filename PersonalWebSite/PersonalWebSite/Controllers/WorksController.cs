@@ -25,7 +25,7 @@ namespace PersonalWebSite.Controllers
         {
             db.Proje.Add(p);
             db.SaveChanges();
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }
