@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PersonalWebSite.Models;
 
 namespace PersonalWebSite.Controllers
 {
@@ -14,6 +15,12 @@ namespace PersonalWebSite.Controllers
         {
             var model = db.Kategori.ToList();
             return View(model);
+        }
+
+        public ActionResult CountBlogByKategori(int kategoriID)
+        {
+            var makaleSayisi = db.Makale.Where(m => m.kategoriID == kategoriID).Count();
+            return View();
         }
     }
 }

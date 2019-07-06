@@ -25,30 +25,15 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 </head>
 <body>
-    <!-- start banner Area -->
-    <section class="relative about-banner">
-        <div class="overlay overlay-bg"></div>
-        <div class="container">
-            <div class="row d-flex align-items-center justify-content-center">
-                <div class="about-content col-lg-12">
-                    <h1 class="text-white">
-                        Yazı İçeriği
-                    </h1>
-                    <p class="text-white link-nav"><a href="/Home/Index">Ana Sayfa </a>  <span class="lnr lnr-arrow-right"></span><a> Yazı İçeriği</a></p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End banner Area -->
     <!-- Start post-content Area -->
-    <section class="post-content-area single-post-area">
+    <section style="margin-top:20px" class="post-content-area single-post-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 posts-list">
                     <div class="single-post row">
                         <div class="col-lg-12">
                             <div class="feature-img">
-                                <img class="img-fluid" src="~/Content/img/blog/feature-img1.jpg" alt="">
+                                <img class="img-fluid" src="~/Upload/WorkPhotos/@Model.MakaleDetay.fotograf" alt="">
                             </div>
                         </div>
                         <div class="col-lg-3  col-md-3 meta-details">
@@ -67,11 +52,6 @@
                                 Veri Bilimi, hiç şüphesiz günümüzün en popüler araştırma ve uygulama alanlarının başında geliyor. Doğası gereği disiplinlerarası bir alan olarak kabul edilmesi gereken Veri Bilimi’ni öğrenmek isteyenlerin sayısı da her geçen gün artıyor. Datajarlabs olarak, verdiğimiz Veri Bilimi eğitimleri sayesinde edindiğimiz tecrübeler ışığında, Veri Bilimi’ni öğrenmek isteyenlere yol göstermesi açısından bir yol haritası oluşturmaya ve takipçilerimizle paylaşmaya karar verdik.
                                 Veri Bilimi, hiç şüphesiz günümüzün en popüler araştırma ve uygulama alanlarının başında geliyor. Doğası gereği disiplinlerarası bir alan olarak kabul edilmesi gereken Veri Bilimi’ni öğrenmek isteyenlerin sayısı da her geçen gün artıyor. Datajarlabs olarak, verdiğimiz Veri Bilimi eğitimleri sayesinde edindiğimiz tecrübeler ışığında, Veri Bilimi’ni öğrenmek isteyenlere yol göstermesi açısından bir yol haritası oluşturmaya ve takipçilerimizle paylaşmaya karar verdik.
                             </p>
-                            <div style="text-align-last:center">
-                                <a href="/AdminBlog/Blog/" class="primary-btn text-uppercase">+ YENİ MAKALE</a>
-                                <a href="/AdminBlog/BlogDetail/@Model.makaleID" class="primary-btn text-uppercase">MAKALEYİ DÜZENLE</a>
-                                <a href="/AdminBlog/RemoveBlog/@Model.makaleID" class="primary-btn text-uppercase">MAKALEYİ SİL</a>
-                            </div>
                         </div>
                     </div>
 
@@ -107,24 +87,24 @@
                         <h4>5 Yorum</h4>
                         <div class="comment-list">
                             @foreach (var item in db.Yorum.ToList())
-                            {
-                             <div class="single-comment justify-content-between d-flex">
-                                <div class="user justify-content-between d-flex">
-                                    <div class="thumb">
-                                        <img src="~/Content/img/blog/c2.jpg" alt="">
+                             {
+                                <div class="single-comment justify-content-between d-flex">
+                                    <div class="user justify-content-between d-flex">
+                                        <div class="thumb">
+                                            <img src="~/Content/img/blog/c2.jpg" alt="">
+                                        </div>
+                                        <div class="desc">
+                                            <h5><a>@item.Uye.adSoyad</a></h5>
+                                            <p class="date">@item.tarih.Value.ToString("dd MMMM yyyy") </p>
+                                            <p class="comment">
+                                                @item.icerik
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="desc">
-                                        <h5><a href="#">@item.Uye.adSoyad</a></h5>
-                                        <p class="date">@item.tarih.Value.ToString("dd MMMM yyyy") </p>
-                                        <p class="comment">
-                                            @item.icerik
-                                        </p>
+                                    <div class="reply-btn">
+                                        <a href="" class="btn-reply text-uppercase">Cevapla</a>
                                     </div>
                                 </div>
-                                <div class="reply-btn">
-                                    <a href="" class="btn-reply text-uppercase">Cevapla</a>
-                                </div>
-                             </div>
                              }
                         </div>
                     </div>
@@ -161,20 +141,20 @@
                                             <img class="img-fluid" src="img/blog/pp1.jpg" alt="">
                                         </div>
                                         <div class="details">
-                                            <a href="#"><h6>@item.MakaleDetay.baslik</h6></a>
+                                            <a href="/Blog/GetMakaleById/@item.makaleID"><h6>@item.MakaleDetay.baslik</h6></a>
                                             <p>@item.MakaleDetay.yayınlanmaTarihi.Value.ToString("dd MMMM yyyy")</p>
                                         </div>
                                     </div>
                                 }
-                                </div>
                             </div>
-                            <div class="single-sidebar-widget ads-widget">
-                                <a href="#"><img class="img-fluid" src="~/Content/img/blog/ads-banner.jpg" alt=""></a>
-                            </div>
-                            <div class="single-sidebar-widget post-category-widget">
-                                <h4 class="category-title">Kategoriler</h4>
-                                @foreach (var item in db.Kategori.ToList())
-                                {
+                        </div>
+                        <div class="single-sidebar-widget ads-widget">
+                            <a href="#"><img class="img-fluid" src="~/Content/img/blog/ads-banner.jpg" alt=""></a>
+                        </div>
+                        <div class="single-sidebar-widget post-category-widget">
+                            <h4 class="category-title">Kategoriler</h4>
+                            @foreach (var item in db.Kategori.ToList())
+                            {
                                 <ul class="cat-list">
                                     <li>
                                         <a href="#" class="d-flex justify-content-between">
@@ -183,9 +163,9 @@
                                         </a>
                                     </li>
                                 </ul>
-                                }
-                            </div>
+                            }
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -193,3 +173,4 @@
     <!-- End post-content Area -->
 </body>
 </html>
+
