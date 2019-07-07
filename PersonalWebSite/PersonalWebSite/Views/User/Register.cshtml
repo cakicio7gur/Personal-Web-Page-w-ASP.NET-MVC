@@ -3,88 +3,47 @@
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>Register</h2>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx" class="no-js">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="colorlib">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="~/Content/UserContents/images/icons/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="~/Content/UserContents/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/UserContents/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/UserContents/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/UserContents/vendor/animate/animate.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/UserContents/vendor/css-hamburgers/hamburgers.min.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/UserContents/vendor/animsition/css/animsition.min.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/UserContents/vendor/select2/select2.min.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/UserContents/vendor/daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/UserContents/css/util.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/UserContents/css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 </head>
 <body>
-
-    <div class="limiter">
-        <div class="container-login100">
-            <div class="wrap-login100 p-t-50 p-b-90">
-                <form action="/User/Registration" method="post" class="login100-form validate-form flex-sb flex-w" >
-                    <span class="login100-form-title p-b-51">
-                        ÜYE OL
-                    </span>
-
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Name is required">
-                        <input class="input100" type="text" name="adSoyad" placeholder="Name">
-                        <span class="focus-input100"></span>
-                    </div>
-
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Username is required">
-                        <input class="input100" type="text" name="kullaniciAdi" placeholder="Username">
-                        <span class="focus-input100"></span>
-                    </div>
-
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
-                        <input class="input100" type="text" name="eMail" placeholder="E-Mail">
-                        <span class="focus-input100"></span>
-                    </div>
-
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
-                        <input class="input100" type="password" name="sifre" placeholder="Password">
-                        <span class="focus-input100"></span>
-                    </div>
-
-                    <div class="flex-sb-m w-full">
-                        <div class="contact100-form-checkbox">
-                            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+    <section class="post-content-area single-post-area">
+        <div class="container">
+            <div class="comment-form">
+                <h4>ÜYE OL</h4>
+                <form action="/User/Register" class="form-group" method="post">
+                    <div class="form-group form-inline">
+                        <div class="form-group col-lg-6 col-md-12 name">
+                            <input type="text" class="form-control" name="adSoyad" placeholder="Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Name'">
                         </div>
-
-                        <div>
-                            <a class="txt1">Zaten Üye Misin ?</a>
-                            <a href="~/Security/Login" class="txt1">
-                                Giriş Yap
-                            </a>
+                        <div class="form-group col-lg-6 col-md-12 email">
+                            <input type="text" class="form-control" name="kullaniciAdi" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
                         </div>
                     </div>
-
-                    <div class="container-login100-form-btn m-t-17">
-                        <button class="login100-form-btn">
-                            KAYDOL
-                        </button>
+                    <div class="form-group form-inline">
+                        <div class="form-group col-lg-6 col-md-12 name">
+                            <input type="text" class="form-control" name="eMail" placeholder="Email Adress" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Adress'">
+                        </div>
+                        <div class="form-group col-lg-6 col-md-12 email">
+                            <input type="password" class="form-control" name="sifre" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+                        </div>
                     </div>
+                    <div>
+                        <a>Zaten Üye Misin ?</a>
+                        <a href="~/Security/Login">Giriş Yap</a>
+                    </div>
+                    <button style="margin-top:10px" class="primary-btn text-uppercase">KAYDOL</button>
                 </form>
             </div>
         </div>
-    </div>
-
-    <script src="~/Content/UserContents/vendor/jquery/jquery-3.2.1.min.js"></script>
-    <script src="~/Content/UserContents/vendor/animsition/js/animsition.min.js"></script>
-    <script src="~/Content/UserContents/vendor/bootstrap/js/popper.js"></script>
-    <script src="~/Content/UserContents/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="~/Content/UserContents/vendor/select2/select2.min.js"></script>
-    <script src="~/Content/UserContents/vendor/daterangepicker/moment.min.js"></script>
-    <script src="~/Content/UserContents/vendor/daterangepicker/daterangepicker.js"></script>
-    <script src="~/Content/UserContents/vendor/countdowntime/countdowntime.js"></script>
-    <script src="~/Content/UserContents/js/main.js"></script>
-
+    </section>  
 </body>
 </html>
