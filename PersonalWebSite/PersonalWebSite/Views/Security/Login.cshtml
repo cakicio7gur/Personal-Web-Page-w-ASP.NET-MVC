@@ -17,11 +17,11 @@
 <body>
     <section class="post-content-area single-post-area">
         <div class="container">
-            <div class="comment-form">
+            <div class="comment-form form">
                 <h4>ÜYE GİRİŞİ</h4>
                 @using (Html.BeginForm("Login", "Security", FormMethod.Post))
                 {
-                    <form action="/User/Register" class="form-group" method="post">
+                    <form action="/User/Register" class="form-group " method="post">
                         <div class="form-group">
                             <div class="form-group col-lg-12 col-md-12">
                                 @Html.TextBoxFor(m => m.UyeDetay.kullaniciAdi, new { @class = "form-control", placeholder = "Username", required = "required", autofocus = "autofocus" })
@@ -42,3 +42,9 @@
     </section>
 </body>
 </html>
+<style type="text/css">
+    .form{
+        margin: 0 auto;
+        width: 500px;
+    }
+</style>

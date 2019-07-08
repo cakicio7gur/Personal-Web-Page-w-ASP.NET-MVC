@@ -17,25 +17,21 @@
 <body>
     <section class="post-content-area single-post-area">
         <div class="container">
-            <div class="comment-form">
+            <div class="comment-form form">
                 <h4>ÜYE OL</h4>
                 <form action="/User/Register" class="form-group" method="post">
-                    <div class="form-group form-inline">
-                        <div class="form-group col-lg-6 col-md-12 name">
+                        <div class="form-group col-lg-12s col-md-12">
                             <input type="text" class="form-control" name="adSoyad" placeholder="Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Name'">
                         </div>
-                        <div class="form-group col-lg-6 col-md-12 email">
+                        <div class="form-group col-lg-12 col-md-12">
                             <input type="text" class="form-control" name="kullaniciAdi" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
                         </div>
-                    </div>
-                    <div class="form-group form-inline">
-                        <div class="form-group col-lg-6 col-md-12 name">
+                        <div class="form-group col-lg-12 col-md-12">
                             <input type="text" class="form-control" name="eMail" placeholder="Email Adress" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Adress'">
                         </div>
-                        <div class="form-group col-lg-6 col-md-12 email">
+                        <div class="form-group col-lg-12 col-md-12">
                             <input type="password" class="form-control" name="sifre" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
                         </div>
-                    </div>
                     <div>
                         <a>Zaten Üye Misin ?</a>
                         <a href="~/Security/Login">Giriş Yap</a>
@@ -47,3 +43,9 @@
     </section>  
 </body>
 </html>
+<style type="text/css">
+    .form{
+        margin: 0 auto;
+        width: 500px;
+    }
+</style>

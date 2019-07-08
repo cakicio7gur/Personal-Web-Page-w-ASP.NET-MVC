@@ -58,7 +58,10 @@ $black			: #222;
   background-color: #8490ff;
   color: #fff;
 }
-
+.form {
+    margin: 0 auto;
+    width: 500px;
+}
 ::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */
   color: #777777;
@@ -3458,7 +3461,7 @@ dl.accordion.time-line:before {
 }
 
 .post-content-area {
-  background-color: #f9f9ff;
+    background-color: #f9f9ff;
 }
 
 .post-content-area .single-post {
