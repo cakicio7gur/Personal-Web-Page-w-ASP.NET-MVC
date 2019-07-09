@@ -24,99 +24,70 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 </head>
 <body>
-    <!-- Start top-category-widget Area -->
-    <section class="top-category-widget-area pt-90 pb-90 ">
+    <section class=" top-category-widget-area pt-90 pb-90  post-content-area">
         <div class="container">
             <div class="row">
-                @foreach (var item in db.Kategori.ToList())
-                {
-                <div class="col-lg-4">
-                    <div class="single-cat-widget">
-                        <div class="content relative">
-                            <div class="overlay overlay-bg"></div>
-                            <a href="/Blog/GetMakaleByKategori/@item.kategoriID" target="_blank">
-                                <div class="thumb">
-                                    <img class="content-image img-fluid d-block mx-auto" src="~/Content/img/blog/kategori.jpg" alt="">
+                <div class="col-lg-8 posts-list">
+                    @foreach (var item in Model)
+                    {
+                        <div class="single-post row">
+                            <div class="col-lg-3  col-md-3 meta-details">
+                                <div class="user-details row">
+                                    <p class="user-name col-lg-12 col-md-12 col-6"><a> @item.Kategori.kategori1 </a> <span class="lnr lnr-bookmark"></span></p>
+                                    <p class="user-name col-lg-12 col-md-12 col-6"><a> Özgür Çakıcı </a> <span class="lnr lnr-user"></span></p>
+                                    <p class="date col-lg-12 col-md-12 col-6"><a>@item.MakaleDetay.yayınlanmaTarihi.Value.ToString("dd MMMM yyyy")</a> <span class="lnr lnr-calendar-full"></span></p>
+                                    <p class="view col-lg-12 col-md-12 col-6"><a> @item.MakaleDetay.goruntulenmeSayisi görüntülenme </a> <span class="lnr lnr-eye"></span></p>
+                                    <p class="comments col-lg-12 col-md-12 col-6"><a>6 Yorum</a> <span class="lnr lnr-bubble"></span></p>
                                 </div>
-                                <div class="content-details">
-                                    <h4>@item.kategori1</h4>
-                                    <span></span>
-                                    <p>3</p>
+                            </div>
+                            <div class="col-lg-9 col-md-9">
+                                <div class="feature-img">
+                                    <img class="img-fluid" title="İncelemek için başlığa tıklayınız." src="~/Upload/WorkPhotos/@item.MakaleDetay.fotograf" alt="">
                                 </div>
-                            </a>
+                                <a class="posts-title" title="İncelemek için tıklayınız." href="/Blog/GetMakaleById/@item.makaleID"><h3>@item.MakaleDetay.baslik</h3></a>
+                                <p class="excert">
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    }
+                    <nav class="blog-pagination justify-content-center d-flex">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" aria-label="Previous">
+                                    <span aria-hidden="true">
+                                        <span class="lnr lnr-chevron-left"></span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="page-item active"><a class="page-link">01</a></li>
+                            <li class="page-item"><a class="page-link">02</a></li>
+                            <li class="page-item"><a class="page-link">03</a></li>
+                            <li class="page-item"><a class="page-link">04</a></li>
+                            <li class="page-item"><a class="page-link">09</a></li>
+                            <li class="page-item">
+                                <a class="page-link" aria-label="Next">
+                                    <span aria-hidden="true">
+                                        <span class="lnr lnr-chevron-right"></span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-                }
-            </div>
-        </div>
-    </section>
-    <!-- End top-category-widget Area -->
-    <!-- Start post-content Area -->
-        <section class="post-content-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 posts-list">
-                        @foreach (var item in Model)
-                        {
-                            <div class="single-post row">
-                                <div class="col-lg-3  col-md-3 meta-details">
-                                    <div class="user-details row">
-                                        <p class="user-name col-lg-12 col-md-12 col-6"><a> @item.Kategori.kategori1 </a> <span class="lnr lnr-bookmark"></span></p>
-                                        <p class="user-name col-lg-12 col-md-12 col-6"><a> Özgür Çakıcı </a> <span class="lnr lnr-user"></span></p>
-                                        <p class="date col-lg-12 col-md-12 col-6"><a>@item.MakaleDetay.yayınlanmaTarihi.Value.ToString("dd MMMM yyyy")</a> <span class="lnr lnr-calendar-full"></span></p>
-                                        <p class="view col-lg-12 col-md-12 col-6"><a> @item.MakaleDetay.goruntulenmeSayisi görüntülenme </a> <span class="lnr lnr-eye"></span></p>
-                                        <p class="comments col-lg-12 col-md-12 col-6"><a>6 Yorum</a> <span class="lnr lnr-bubble"></span></p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-9 col-md-9">
-                                    <div class="feature-img">
-                                        <img class="img-fluid" title="İncelemek için başlığa tıklayınız." src="~/Upload/WorkPhotos/@item.MakaleDetay.fotograf" alt="">
-                                    </div>
-                                    <a class="posts-title" title="İncelemek için tıklayınız." href="/Blog/GetMakaleById/@item.makaleID"><h3>@item.MakaleDetay.baslik</h3></a>
-                                    <p class="excert">
-                                    </p>
-                                </div>
-                            </div>
-                        }
-                        <nav class="blog-pagination justify-content-center d-flex">
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" aria-label="Previous">
-                                        <span aria-hidden="true">
-                                            <span class="lnr lnr-chevron-left"></span>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="page-item active"><a class="page-link">01</a></li>
-                                <li class="page-item"><a class="page-link">02</a></li>
-                                <li class="page-item"><a class="page-link">03</a></li>
-                                <li class="page-item"><a class="page-link">04</a></li>
-                                <li class="page-item"><a class="page-link">09</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" aria-label="Next">
-                                        <span aria-hidden="true">
-                                            <span class="lnr lnr-chevron-right"></span>
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="col-lg-4 sidebar-widgets">
-                        <div class="widget-wrap">
-                            <div class="single-sidebar-widget search-widget">
-                                <form class="search-form" action="#">
-                                    <input placeholder="Ara" name="search" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
-                                    <button type="submit"><i class="fa fa-search"></i></button>
-                                </form>
-                            </div>
+                <div class="col-lg-4 sidebar-widgets">
+                    <div class="widget-wrap">
+                        <div class="single-sidebar-widget search-widget">
+                            <form class="search-form" action="#">
+                                <input placeholder="Ara" name="search" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
 
-                            <div class="single-sidebar-widget popular-post-widget">
-                                <h4 class="popular-title">En çok okunanlar</h4>
-                                <div class="popular-post-list">
-                                    @foreach (var item in Model)
-                                    {
+                        <div class="single-sidebar-widget popular-post-widget">
+                            <h4 class="popular-title">En çok okunanlar</h4>
+                            <div class="popular-post-list">
+                                @foreach (var item in Model)
+                                {
                                     <div class="single-post-list d-flex flex-row align-items-center">
                                         <div class="thumb">
                                             <img class="img-fluid" src="img/blog/pp1.jpg" alt="">
@@ -126,16 +97,16 @@
                                             <p>@item.MakaleDetay.yayınlanmaTarihi.Value.ToString("dd MMMM yyyy")</p>
                                         </div>
                                     </div>
-                                    }
-                                </div>
+                                }
                             </div>
-                            <div class="single-sidebar-widget ads-widget">
-                                <a href="#"><img class="img-fluid" src="img/blog/ads-banner.jpg" alt=""></a>
-                            </div>
-                            <div class="single-sidebar-widget post-category-widget">
-                                <h4 class="category-title">Kategoriler</h4>
-                                @foreach (var item in db.Kategori.ToList())
-                                {
+                        </div>
+                        <div class="single-sidebar-widget ads-widget">
+                            <a href="#"><img class="img-fluid" src="img/blog/ads-banner.jpg" alt=""></a>
+                        </div>
+                        <div class="single-sidebar-widget post-category-widget">
+                            <h4 class="category-title">Kategoriler</h4>
+                            @foreach (var item in db.Kategori.ToList())
+                            {
                                 <ul class="cat-list">
                                     <li>
                                         <a href="#" class="d-flex justify-content-between">
@@ -144,13 +115,13 @@
                                         </a>
                                     </li>
                                 </ul>
-                                }
-                            </div>
+                            }
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 </body>
 </html>
 

@@ -129,9 +129,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BlogController.cs" />
-    <Compile Include="Controllers\DiscoverController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KategoriController.cs" />
+    <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WorksController.cs" />
@@ -657,8 +657,6 @@
     <Content Include="Views\Home\AboutMe.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Works\Index.cshtml" />
-    <Content Include="Views\Discover\Culture.cshtml" />
-    <Content Include="Views\Discover\Motivation.cshtml" />
     <Content Include="Views\Security\Login.cshtml" />
     <Content Include="Views\User\UserList.cshtml" />
     <Content Include="Views\Blog\GetMakaleById.cshtml" />
@@ -669,6 +667,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Kategori\" />
+    <Folder Include="Views\Mail\" />
     <Folder Include="Views\Yorum\" />
   </ItemGroup>
   <ItemGroup>
