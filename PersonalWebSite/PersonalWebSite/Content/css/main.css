@@ -58,6 +58,10 @@ $black			: #222;
   background-color: #8490ff;
   color: #fff;
 }
+.usernavitem {
+    border-style: solid;
+    border-radius:25px;
+}
 .form {
     margin: 0 auto;
     width: 500px;

@@ -1,5 +1,7 @@
-﻿@using PersonalWebSite.Models
-@model List<Makale>
+﻿@using PagedList
+@using PagedList.Mvc
+@using PersonalWebSite.Models
+@model IPagedList<Makale>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -51,34 +53,15 @@
                         </div>
                     }
                     <nav class="blog-pagination justify-content-center d-flex">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" aria-label="Previous">
-                                    <span aria-hidden="true">
-                                        <span class="lnr lnr-chevron-left"></span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="page-item active"><a class="page-link">01</a></li>
-                            <li class="page-item"><a class="page-link">02</a></li>
-                            <li class="page-item"><a class="page-link">03</a></li>
-                            <li class="page-item"><a class="page-link">04</a></li>
-                            <li class="page-item"><a class="page-link">09</a></li>
-                            <li class="page-item">
-                                <a class="page-link" aria-label="Next">
-                                    <span aria-hidden="true">
-                                        <span class="lnr lnr-chevron-right"></span>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
+
+                                @Html.PagedListPager(Model, _sayfaNo => Url.Action("Index", "Blog", new { SayfaNo = _sayfaNo }), PagedListRenderOptions.MinimalWithPageCountText)
                     </nav>
                 </div>
                 <div class="col-lg-4 sidebar-widgets">
                     <div class="widget-wrap">
                         <div class="single-sidebar-widget search-widget">
-                            <form class="search-form" action="#">
-                                <input placeholder="Ara" name="search" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
+                            <form class="search-form" action="@Url.Action("GetMakaleByTarget","Blog")" method="post">
+                                <input placeholder="Ara" name="target" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Aramak istediğiniz şey nedir?'">
                                 <button type="submit"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
@@ -86,7 +69,7 @@
                         <div class="single-sidebar-widget popular-post-widget">
                             <h4 class="popular-title">En çok okunanlar</h4>
                             <div class="popular-post-list">
-                                @foreach (var item in Model)
+                                @foreach (var item in db.Makale)
                                 {
                                     <div class="single-post-list d-flex flex-row align-items-center">
                                         <div class="thumb">
@@ -105,7 +88,7 @@
                         </div>
                         <div class="single-sidebar-widget post-category-widget">
                             <h4 class="category-title">Kategoriler</h4>
-                            @foreach (var item in db.Kategori.ToList())
+                            @foreach (var item in db.Kategori)
                             {
                                 <ul class="cat-list">
                                     <li>
