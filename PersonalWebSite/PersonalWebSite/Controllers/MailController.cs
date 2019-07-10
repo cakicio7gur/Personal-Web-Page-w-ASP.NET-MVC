@@ -12,6 +12,7 @@ namespace PersonalWebSite.Controllers
     {
         public ActionResult SendMail(string ad, string mail,string konu, string mesaj)
         {
+
             System.Globalization.CultureInfo cultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture;
             System.Globalization.TextInfo textInfo = cultureInfo.TextInfo;
             string isim = textInfo.ToTitleCase(ad);
@@ -23,7 +24,7 @@ namespace PersonalWebSite.Controllers
             ePosta.From = new MailAddress("groupbyazilim@gmail.com");
             ePosta.To.Add("cakicozgur@gmail.com");
             ePosta.Subject = subject;
-            ePosta.Body = isim + "[" + email + "]" + "+ ziyaretçisinden mesaj;"
+            ePosta.Body = isim + " [" + email + "] " + "adlı üyeden mesaj;"
                           + Environment.NewLine
                           + Environment.NewLine
                           + message;
@@ -33,16 +34,8 @@ namespace PersonalWebSite.Controllers
             smtp.Host = "smtp.gmail.com";
             smtp.EnableSsl = true;
             object userState = ePosta;
-            try
-            {
-                smtp.SendAsync(ePosta, (object)ePosta);
-                return View() ;
-            }
-            catch (SmtpException ex)
-            {
-                throw new SmtpException(ex.ToString());
-            }
-
+            smtp.Send(ePosta);
+            return RedirectToAction("Index","Home");
         }
     }
 }
