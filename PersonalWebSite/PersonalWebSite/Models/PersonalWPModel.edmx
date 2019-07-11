@@ -38,7 +38,6 @@
           <Property Name="projeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="projeBaslik" Type="nvarchar" MaxLength="100" />
           <Property Name="projeLink" Type="nvarchar" MaxLength="500" />
-          <Property Name="projeResim" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -81,8 +80,8 @@
             <PropertyRef Name="yorumID" />
           </Key>
           <Property Name="yorumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adSoyad" Type="nvarchar" MaxLength="100" />
           <Property Name="icerik" Type="nvarchar" MaxLength="500" />
-          <Property Name="uyeID" Type="int" />
           <Property Name="makaleID" Type="int" />
           <Property Name="tarih" Type="date" />
         </EntityType>
@@ -146,18 +145,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Yorum_Uye">
-          <End Role="Uye" Type="Self.Uye" Multiplicity="0..1" />
-          <End Role="Yorum" Type="Self.Yorum" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Uye">
-              <PropertyRef Name="uyeID" />
-            </Principal>
-            <Dependent Role="Yorum">
-              <PropertyRef Name="uyeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -217,10 +204,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_Yorum_Makale" Association="Self.FK_Yorum_Makale">
             <End Role="Makale" EntitySet="Makale" />
-            <End Role="Yorum" EntitySet="Yorum" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Yorum_Uye" Association="Self.FK_Yorum_Uye">
-            <End Role="Uye" EntitySet="Uye" />
             <End Role="Yorum" EntitySet="Yorum" />
           </AssociationSet>
         </EntityContainer>
@@ -287,7 +270,6 @@
           <Property Name="adSoyad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Rol" Relationship="Self.FK_Uye_Rol" FromRole="Uye" ToRole="Rol" />
           <NavigationProperty Name="UyeDetay" Relationship="Self.FK_Uye_UyeDetay" FromRole="Uye" ToRole="UyeDetay" />
-          <NavigationProperty Name="Yorum" Relationship="Self.FK_Yorum_Uye" FromRole="Uye" ToRole="Yorum" />
         </EntityType>
         <EntityType Name="UyeDetay">
           <Key>
@@ -306,11 +288,10 @@
           </Key>
           <Property Name="yorumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="icerik" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="uyeID" Type="Int32" />
           <Property Name="makaleID" Type="Int32" />
           <Property Name="tarih" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Makale" Relationship="Self.FK_Yorum_Makale" FromRole="Yorum" ToRole="Makale" />
-          <NavigationProperty Name="Uye" Relationship="Self.FK_Yorum_Uye" FromRole="Yorum" ToRole="Uye" />
+          <Property Name="adSoyad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Makale_Kategori">
           <End Role="Kategori" Type="Self.Kategori" Multiplicity="0..1" />
@@ -372,18 +353,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Yorum_Uye">
-          <End Role="Uye" Type="Self.Uye" Multiplicity="0..1" />
-          <End Role="Yorum" Type="Self.Yorum" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Uye">
-              <PropertyRef Name="uyeID" />
-            </Principal>
-            <Dependent Role="Yorum">
-              <PropertyRef Name="uyeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="PersonalWebPageDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Kategori" EntityType="Self.Kategori" />
           <EntitySet Name="Makale" EntityType="Self.Makale" />
@@ -412,10 +381,6 @@
           <AssociationSet Name="FK_Uye_UyeDetay" Association="Self.FK_Uye_UyeDetay">
             <End Role="UyeDetay" EntitySet="UyeDetay" />
             <End Role="Uye" EntitySet="Uye" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Yorum_Uye" Association="Self.FK_Yorum_Uye">
-            <End Role="Uye" EntitySet="Uye" />
-            <End Role="Yorum" EntitySet="Yorum" />
           </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -467,7 +432,6 @@
           <Property Name="projeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="projeBaslik" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="projeLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="projeResim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -547,9 +511,9 @@
           <EntitySetMapping Name="Yorum">
             <EntityTypeMapping TypeName="PersonalWebPageDBModel.Yorum">
               <MappingFragment StoreEntitySet="Yorum">
+                <ScalarProperty Name="adSoyad" ColumnName="adSoyad" />
                 <ScalarProperty Name="yorumID" ColumnName="yorumID" />
                 <ScalarProperty Name="icerik" ColumnName="icerik" />
-                <ScalarProperty Name="uyeID" ColumnName="uyeID" />
                 <ScalarProperty Name="makaleID" ColumnName="makaleID" />
                 <ScalarProperty Name="tarih" ColumnName="tarih" />
               </MappingFragment>
@@ -582,7 +546,6 @@
           <EntitySetMapping Name="Proje">
             <EntityTypeMapping TypeName="PersonalWebPageDBModel.Proje">
               <MappingFragment StoreEntitySet="Proje">
-                <ScalarProperty Name="projeResim" ColumnName="projeResim" />
                 <ScalarProperty Name="projeLink" ColumnName="projeLink" />
                 <ScalarProperty Name="projeBaslik" ColumnName="projeBaslik" />
                 <ScalarProperty Name="projeID" ColumnName="projeID" />

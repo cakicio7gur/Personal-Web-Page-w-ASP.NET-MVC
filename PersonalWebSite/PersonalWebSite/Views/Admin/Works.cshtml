@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Works";
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-user">
+                <div class="card-header">
+                    <h5 class="card-title">New Project</h5>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Project Title</label>
+                                    <input name="projeBaslik" type="text" class="form-control" placeholder="Stock Tracking System ">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Project Link</label>
+                                    <input name="projeLink" type="text" class="form-control" placeholder="www.123.com">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="update ml-auto mr-auto">
+                                <button type="submit" class="btn btn-primary btn-round">ADD PROJECT</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

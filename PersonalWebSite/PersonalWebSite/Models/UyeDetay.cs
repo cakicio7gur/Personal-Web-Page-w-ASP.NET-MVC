@@ -11,8 +11,7 @@ namespace PersonalWebSite.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class UyeDetay
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,18 +21,9 @@ namespace PersonalWebSite.Models
         }
     
         public int uyeDetayBilgiID { get; set; }
-
-        [Required(ErrorMessage = "Email adresinizi kontrol ediniz.")]
         public string eMail { get; set; }
-
-        [Required(ErrorMessage = "Kullanýcý adýný kontrol ediniz.")]
-        [StringLength(20, ErrorMessage = "Kullanýcý adýnýz en fazla 20 karakterden oluþmalýdýr.")]
         public string kullaniciAdi { get; set; }
-
-        [Required(ErrorMessage = "Þifreyi kontrol ediniz.")]
-        [StringLength(20,ErrorMessage ="Þifreniz en fazla 20 karakterden oluþmalýdýr.")]
         public string sifre { get; set; }
-
         public string fotograf { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

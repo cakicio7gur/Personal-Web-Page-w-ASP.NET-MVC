@@ -16,11 +16,10 @@ namespace PersonalWebSite.Models
     {
         public int yorumID { get; set; }
         public string icerik { get; set; }
-        public Nullable<int> uyeID { get; set; }
         public Nullable<int> makaleID { get; set; }
         public Nullable<System.DateTime> tarih { get; set; }
+        public string adSoyad { get; set; }
     
         public virtual Makale Makale { get; set; }
-        public virtual Uye Uye { get; set; }
     }
 }

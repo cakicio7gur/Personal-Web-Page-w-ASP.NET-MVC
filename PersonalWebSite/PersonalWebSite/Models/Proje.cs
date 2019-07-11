@@ -11,18 +11,11 @@ namespace PersonalWebSite.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Proje
     {
         public int projeID { get; set; }
-
-        [Required(ErrorMessage = "Proje Baþlýðýný kontrol ediniz.")]
         public string projeBaslik { get; set; }
-
-        [Required(ErrorMessage = "Proje Linkini kontrol ediniz.")]
         public string projeLink { get; set; }
-
-        public string projeResim { get; set; }
     }
 }

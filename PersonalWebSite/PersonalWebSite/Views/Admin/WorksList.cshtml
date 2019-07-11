@@ -1,0 +1,41 @@
+﻿@using PersonalWebSite.Models
+@model List<Proje>
+@{
+    ViewBag.Title = "WorksList";
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Project List</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead class="text-primary">
+                            <tr>
+                                <th>PROJE</th>
+                                <th>PROJE LİNK</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.projeBaslik</td>
+                                    <td>@item.projeLink</td>
+                                    <td class="text-right">
+                                        <a href="#" class="btn btn-warning">UPDATE</a>
+                                        <a href="/Admin/RemoveProject/@item.projeID" class="btn btn-danger">DELETE</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

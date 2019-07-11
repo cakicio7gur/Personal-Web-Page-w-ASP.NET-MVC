@@ -33,7 +33,6 @@
     <Property Name="projeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="projeBaslik" Type="nvarchar" MaxLength="100" />
     <Property Name="projeLink" Type="nvarchar" MaxLength="500" />
-    <Property Name="projeResim" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Rol">
     <Key>
@@ -76,8 +75,8 @@
       <PropertyRef Name="yorumID" />
     </Key>
     <Property Name="yorumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="adSoyad" Type="nvarchar" MaxLength="100" />
     <Property Name="icerik" Type="nvarchar" MaxLength="500" />
-    <Property Name="uyeID" Type="int" />
     <Property Name="makaleID" Type="int" />
     <Property Name="tarih" Type="date" />
   </EntityType>
@@ -141,18 +140,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Yorum_Uye">
-    <End Role="Uye" Type="Self.Uye" Multiplicity="0..1" />
-    <End Role="Yorum" Type="Self.Yorum" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Uye">
-        <PropertyRef Name="uyeID" />
-      </Principal>
-      <Dependent Role="Yorum">
-        <PropertyRef Name="uyeID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
   <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -212,10 +199,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_Yorum_Makale" Association="Self.FK_Yorum_Makale">
       <End Role="Makale" EntitySet="Makale" />
-      <End Role="Yorum" EntitySet="Yorum" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Yorum_Uye" Association="Self.FK_Yorum_Uye">
-      <End Role="Uye" EntitySet="Uye" />
       <End Role="Yorum" EntitySet="Yorum" />
     </AssociationSet>
   </EntityContainer>

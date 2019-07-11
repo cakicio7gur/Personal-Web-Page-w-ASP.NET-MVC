@@ -1,0 +1,41 @@
+﻿@using PersonalWebSite.Models
+@model List<Makale>
+@{
+    ViewBag.Title = "BlogsList";
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Blog List</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead class="text-primary">
+                            <tr>
+                                <th>BLOG</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.MakaleDetay.baslik</td>
+                                    <td class="text-right">
+                                        <a href="/Admin/GetBlogDetailByID/@item.makaleID" class="btn btn-warning">UPDATE</a>
+                                        <a href="/Admin/RemoveBlog/@item.makaleID" class="btn btn-danger">DELETE</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

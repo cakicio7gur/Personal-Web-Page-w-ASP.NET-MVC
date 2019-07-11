@@ -84,25 +84,22 @@
                         </div>
                     </div>
                     <div class="comments-area">
-                        <h4>5 Yorum</h4>
+                        <h4>Yorumlar</h4>
                         <div class="comment-list">
-                            @foreach (var item in db.Yorum.ToList())
+                            @foreach (var item in ViewBag.makaleyeAitYorumlar)
                              {
-                                <div class="single-comment justify-content-between d-flex">
+                                <div class="single-comment j d-flex">
                                     <div class="user justify-content-between d-flex">
                                         <div class="thumb">
                                             <img src="~/Content/img/blog/c2.jpg" alt="">
                                         </div>
                                         <div class="desc">
-                                            <h5><a>@item.Uye.adSoyad</a></h5>
-                                            <p class="date">@item.tarih.Value.ToString("dd MMMM yyyy") </p>
-                                            <p class="comment">
-                                                @item.icerik
+                                            <h5><a>@item.adSoyad</a></h5>
+                                            <p class="date">@item.tarih</p>
+                                            <p>
+                                                @item.icerik 
                                             </p>
                                         </div>
-                                    </div>
-                                    <div class="reply-btn">
-                                        <a href="" class="btn-reply text-uppercase">Cevapla</a>
                                     </div>
                                 </div>
                              }
@@ -110,24 +107,19 @@
                     </div>
                     <div class="comment-form">
                         <h4>Bir Yorum Ekle</h4>
-                        <form>
-                            <div class="form-group form-inline">
-                                <div class="form-group col-lg-6 col-md-12 name">
-                                    <input type="text" class="form-control" id="name" placeholder="İsminiz" onfocus="this.placeholder = ''" onblur="this.placeholder = 'İsminiz'">
+                            <form action="/Yorum/AddComment" method="post">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="isim" placeholder="Adınız Soyadınız" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Adınız Soyadınız'">
+                                    </div>
                                 </div>
-                                <div class="form-group col-lg-6 col-md-12 email">
-                                    <input type="email" class="form-control" id="email" placeholder="E-Mailiniz" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-Mailiniz'">
+                                <div class="form-group">
+                                    <textarea class="form-control mb-10" rows="5" name="yorum" placeholder="Yorumunuz" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Yorumunuz'" required=""></textarea>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="subject" placeholder="Konu" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Konu'">
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control mb-10" rows="5" name="message" placeholder="Mesajınız" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mesajınız'" required=""></textarea>
-                            </div>
-                            <button href="#" class="primary-btn text-uppercase">Yorum Yap</button>
-                        </form>
-                    </div>
+                                <button href="#" class="primary-btn text-uppercase">Yorum Yap</button>
+                                @Html.HiddenFor(m => m.makaleID);
+                            </form>
+                        </div>
                 </div>
                 <div class="col-lg-4 sidebar-widgets">
                     <div class="widget-wrap">
@@ -136,6 +128,8 @@
                             <div class="popular-post-list">
                                 @foreach (var item in db.Makale.ToList())
                                 {
+                                    if (item.MakaleDetay.goruntulenmeSayisi>=200)
+                                    {
                                     <div class="single-post-list d-flex flex-row align-items-center">
                                         <div class="thumb">
                                             <img class="img-fluid" src="img/blog/pp1.jpg" alt="">
@@ -145,6 +139,7 @@
                                             <p>@item.MakaleDetay.yayınlanmaTarihi.Value.ToString("dd MMMM yyyy")</p>
                                         </div>
                                     </div>
+                                    }
                                 }
                             </div>
                         </div>
@@ -155,11 +150,19 @@
                             <h4 class="category-title">Kategoriler</h4>
                             @foreach (var item in db.Kategori.ToList())
                             {
+                                var makaleSayisi = 0;
+                                foreach (var numbers in db.Makale.ToList())
+                                {
+                                    if (item.kategoriID == numbers.kategoriID)
+                                    {
+                                        makaleSayisi++;
+                                    }
+                                }
                                 <ul class="cat-list">
                                     <li>
-                                        <a href="#" class="d-flex justify-content-between">
+                                        <a href="/Blog/GetBlogByKategori/@item.kategoriID" class="d-flex justify-content-between">
                                             <p>@item.kategori1</p>
-                                            <p>3</p>
+                                            <p> @makaleSayisi </p>
                                         </a>
                                     </li>
                                 </ul>

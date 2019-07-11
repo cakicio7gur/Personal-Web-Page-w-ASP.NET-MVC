@@ -59,7 +59,6 @@
     <Property Name="adSoyad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Rol" Relationship="Self.FK_Uye_Rol" FromRole="Uye" ToRole="Rol" />
     <NavigationProperty Name="UyeDetay" Relationship="Self.FK_Uye_UyeDetay" FromRole="Uye" ToRole="UyeDetay" />
-    <NavigationProperty Name="Yorum" Relationship="Self.FK_Yorum_Uye" FromRole="Uye" ToRole="Yorum" />
   </EntityType>
   <EntityType Name="UyeDetay">
     <Key>
@@ -78,11 +77,10 @@
     </Key>
     <Property Name="yorumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="icerik" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="uyeID" Type="Int32" />
     <Property Name="makaleID" Type="Int32" />
     <Property Name="tarih" Type="DateTime" Precision="0" />
     <NavigationProperty Name="Makale" Relationship="Self.FK_Yorum_Makale" FromRole="Yorum" ToRole="Makale" />
-    <NavigationProperty Name="Uye" Relationship="Self.FK_Yorum_Uye" FromRole="Yorum" ToRole="Uye" />
+    <Property Name="adSoyad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_Makale_Kategori">
     <End Role="Kategori" Type="Self.Kategori" Multiplicity="0..1" />
@@ -144,18 +142,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Yorum_Uye">
-    <End Role="Uye" Type="Self.Uye" Multiplicity="0..1" />
-    <End Role="Yorum" Type="Self.Yorum" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Uye">
-        <PropertyRef Name="uyeID" />
-      </Principal>
-      <Dependent Role="Yorum">
-        <PropertyRef Name="uyeID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="PersonalWebPageDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Kategori" EntityType="Self.Kategori" />
     <EntitySet Name="Makale" EntityType="Self.Makale" />
@@ -184,10 +170,6 @@
     <AssociationSet Name="FK_Uye_UyeDetay" Association="Self.FK_Uye_UyeDetay">
       <End Role="UyeDetay" EntitySet="UyeDetay" />
       <End Role="Uye" EntitySet="Uye" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Yorum_Uye" Association="Self.FK_Yorum_Uye">
-      <End Role="Uye" EntitySet="Uye" />
-      <End Role="Yorum" EntitySet="Yorum" />
     </AssociationSet>
     <FunctionImport Name="sp_alterdiagram">
       <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -239,6 +221,5 @@
     <Property Name="projeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="projeBaslik" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="projeLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="projeResim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

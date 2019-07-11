@@ -18,7 +18,6 @@
         <AssociationConnector Association="PersonalWebPageDBModel.FK_Yorum_Makale" ManuallyRouted="false" />
         <AssociationConnector Association="PersonalWebPageDBModel.FK_Uye_Rol" ManuallyRouted="false" />
         <AssociationConnector Association="PersonalWebPageDBModel.FK_Uye_UyeDetay" ManuallyRouted="false" />
-        <AssociationConnector Association="PersonalWebPageDBModel.FK_Yorum_Uye" ManuallyRouted="false" />
         <EntityTypeShape EntityType="PersonalWebPageDBModel.Proje" Width="1.5" PointX="5.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>

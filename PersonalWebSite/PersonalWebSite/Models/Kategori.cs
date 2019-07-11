@@ -11,8 +11,7 @@ namespace PersonalWebSite.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Kategori
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,9 +21,6 @@ namespace PersonalWebSite.Models
         }
     
         public int kategoriID { get; set; }
-
-        [Required(ErrorMessage = "Kategori bilgisini kontrol ediniz.")]
-        [StringLength(50,ErrorMessage ="Kategori ismi en fazla 50 karakterden oluþmalýdýr.")]
         public string kategori1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

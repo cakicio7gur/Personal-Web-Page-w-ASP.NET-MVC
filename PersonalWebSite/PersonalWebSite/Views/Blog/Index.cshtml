@@ -1,7 +1,5 @@
-﻿@using PagedList
-@using PagedList.Mvc
-@using PersonalWebSite.Models
-@model IPagedList<Makale>
+﻿@using PersonalWebSite.Models
+@model List<Makale>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -26,85 +24,93 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 </head>
 <body>
-    <section class=" top-category-widget-area pt-90 pb-90  post-content-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 posts-list">
-                    @foreach (var item in Model)
-                    {
-                        <div class="single-post row">
-                            <div class="col-lg-3  col-md-3 meta-details">
-                                <div class="user-details row">
-                                    <p class="user-name col-lg-12 col-md-12 col-6"><a> @item.Kategori.kategori1 </a> <span class="lnr lnr-bookmark"></span></p>
-                                    <p class="user-name col-lg-12 col-md-12 col-6"><a> Özgür Çakıcı </a> <span class="lnr lnr-user"></span></p>
-                                    <p class="date col-lg-12 col-md-12 col-6"><a>@item.MakaleDetay.yayınlanmaTarihi.Value.ToString("dd MMMM yyyy")</a> <span class="lnr lnr-calendar-full"></span></p>
-                                    <p class="view col-lg-12 col-md-12 col-6"><a> @item.MakaleDetay.goruntulenmeSayisi görüntülenme </a> <span class="lnr lnr-eye"></span></p>
-                                    <p class="comments col-lg-12 col-md-12 col-6"><a>6 Yorum</a> <span class="lnr lnr-bubble"></span></p>
-                                </div>
-                            </div>
-                            <div class="col-lg-9 col-md-9">
-                                <div class="feature-img">
-                                    <img class="img-fluid" title="İncelemek için başlığa tıklayınız." src="~/Upload/WorkPhotos/@item.MakaleDetay.fotograf" alt="">
-                                </div>
-                                <a class="posts-title" title="İncelemek için tıklayınız." href="/Blog/GetMakaleById/@item.makaleID"><h3>@item.MakaleDetay.baslik</h3></a>
-                                <p class="excert">
-                                </p>
-                            </div>
-                        </div>
-                    }
-                    <nav class="blog-pagination justify-content-center d-flex">
-
-                                @Html.PagedListPager(Model, _sayfaNo => Url.Action("Index", "Blog", new { SayfaNo = _sayfaNo }), PagedListRenderOptions.MinimalWithPageCountText)
-                    </nav>
-                </div>
-                <div class="col-lg-4 sidebar-widgets">
-                    <div class="widget-wrap">
-                        <div class="single-sidebar-widget search-widget">
-                            <form class="search-form" action="@Url.Action("GetMakaleByTarget","Blog")" method="post">
-                                <input placeholder="Ara" name="target" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Aramak istediğiniz şey nedir?'">
-                                <button type="submit"><i class="fa fa-search"></i></button>
-                            </form>
-                        </div>
-
-                        <div class="single-sidebar-widget popular-post-widget">
-                            <h4 class="popular-title">En çok okunanlar</h4>
-                            <div class="popular-post-list">
-                                @foreach (var item in db.Makale)
-                                {
-                                    <div class="single-post-list d-flex flex-row align-items-center">
-                                        <div class="thumb">
-                                            <img class="img-fluid" src="img/blog/pp1.jpg" alt="">
-                                        </div>
-                                        <div class="details">
-                                            <a href="/Blog/GetMakaleById/@item.makaleID"><h6>@item.MakaleDetay.baslik</h6></a>
-                                            <p>@item.MakaleDetay.yayınlanmaTarihi.Value.ToString("dd MMMM yyyy")</p>
-                                        </div>
-                                    </div>
-                                }
-                            </div>
-                        </div>
-                        <div class="single-sidebar-widget ads-widget">
-                            <a href="#"><img class="img-fluid" src="img/blog/ads-banner.jpg" alt=""></a>
-                        </div>
-                        <div class="single-sidebar-widget post-category-widget">
-                            <h4 class="category-title">Kategoriler</h4>
-                            @foreach (var item in db.Kategori)
+        <section class=" top-category-widget-area pt-90 pb-90  post-content-area">
+            <div class="container">
+                <div class="row col-lg-12 col-md-12">
+                    <div class="col-lg-8 col-md-8">
+                        <div class="row">
+                            @foreach (var item in Model)
                             {
-                                <ul class="cat-list">
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>@item.kategori1</p>
-                                            <p>3</p>
-                                        </a>
-                                    </li>
-                                </ul>
+                            <div style="margin-bottom:30px" class="single-recent-blog col-lg-6 col-md-6">
+                                <div class="thumb">
+                                    <a href="/Blog/GetMakaleById/@item.makaleID"><img class="f-img img-fluid mx-auto" title="İncelemek için tıklayınız." src="~/Upload/WorkPhotos/@item.MakaleDetay.fotograf"></a>
+                                </div>
+                                <div class="bottom d-flex justify-content-between align-items-center flex-wrap">
+                                    <div>
+                                        <span class="lnr lnr-bookmark"></span>@item.Kategori.kategori1
+                                    </div>
+                                    <div class="meta">
+                                        <span class="lnr lnr-calendar-full"></span><a> @item.MakaleDetay.yayınlanmaTarihi.Value.ToString("dd MMMM yyyy")</a>
+                                        <span class="lnr lnr-eye"></span><a> @item.MakaleDetay.goruntulenmeSayisi </a>
+                                    </div>
+                                </div>
+                                <a href="/Blog/GetMakaleById/@item.makaleID">
+                                    <h5>@item.MakaleDetay.baslik</h5>
+                                </a>
+                            </div>
                             }
                         </div>
                     </div>
+                        <div class="col-lg-4 sidebar-widgets">
+                            <div class="widget-wrap">
+                                <div class="single-sidebar-widget search-widget">
+                                    <form class="search-form" action="/Blog/GetBlogBySearch" method="post">
+                                        <input placeholder="Ara" name="search" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ara'">
+                                        <button type="submit"><i class="fa fa-search"></i></button>
+                                    </form>
+                                </div>
+
+                                <div class="single-sidebar-widget popular-post-widget">
+                                    <h4 class="popular-title">En çok okunanlar</h4>
+                                    <div class="popular-post-list">
+                                        @foreach (var item in db.Makale)
+                                        {
+                                            if (item.MakaleDetay.goruntulenmeSayisi >= 200)
+                                            {
+                                                <div class="single-post-list d-flex flex-row align-items-center">
+                                                    <div class="thumb">
+                                                        <img class="img-fluid" src="Content/img/blog/pp1.jpg" alt="">
+                                                    </div>
+                                                    <div class="details">
+                                                        <a href="/Blog/GetMakaleById/@item.makaleID"><h6>@item.MakaleDetay.baslik</h6></a>
+                                                        <p>@item.MakaleDetay.yayınlanmaTarihi.Value.ToString("dd MMMM yyyy")</p>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                                <div class="single-sidebar-widget ads-widget">
+                                    <a href="#"><img class="img-fluid" src="img/blog/ads-banner.jpg" alt=""></a>
+                                </div>
+                                <div class="single-sidebar-widget post-category-widget">
+                                    <h4 class="category-title">Kategoriler</h4>
+
+                                    @foreach (var item in db.Kategori.ToList())
+                                    {
+                                        var makaleSayisi = 0;
+                                        foreach (var numbers in db.Makale.ToList())
+                                        {
+                                            if (item.kategoriID == numbers.kategoriID)
+                                            {
+                                                makaleSayisi++;
+                                            }
+                                        }
+                                        <ul class="cat-list">
+                                            <li>
+                                                <a href="/Blog/GetBlogByKategori/@item.kategoriID" class="d-flex justify-content-between">
+                                                    <p>@item.kategori1</p>
+                                                    <p> @makaleSayisi </p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
+</section>
 </body>
 </html>
 

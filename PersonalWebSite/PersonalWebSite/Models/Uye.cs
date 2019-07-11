@@ -11,27 +11,15 @@ namespace PersonalWebSite.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Uye
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Uye()
-        {
-            this.Yorum = new HashSet<Yorum>();
-        }
-    
         public int uyeID { get; set; }
         public Nullable<int> uyeDetayBilgiID { get; set; }
         public Nullable<int> rolID { get; set; }
-
-        [Required(ErrorMessage = "Ýsim soyisim bilgisini kontrol ediniz.")]
-        [StringLength(50,ErrorMessage ="Ad Soyad bilgisi en fazla 50 karakterden oluþmalýdýr.")]
         public string adSoyad { get; set; }
     
         public virtual Rol Rol { get; set; }
         public virtual UyeDetay UyeDetay { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Yorum> Yorum { get; set; }
     }
 }

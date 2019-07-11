@@ -73,9 +73,9 @@
     <EntitySetMapping Name="Yorum">
       <EntityTypeMapping TypeName="PersonalWebPageDBModel.Yorum">
         <MappingFragment StoreEntitySet="Yorum">
+          <ScalarProperty Name="adSoyad" ColumnName="adSoyad" />
           <ScalarProperty Name="yorumID" ColumnName="yorumID" />
           <ScalarProperty Name="icerik" ColumnName="icerik" />
-          <ScalarProperty Name="uyeID" ColumnName="uyeID" />
           <ScalarProperty Name="makaleID" ColumnName="makaleID" />
           <ScalarProperty Name="tarih" ColumnName="tarih" />
         </MappingFragment>
@@ -108,7 +108,6 @@
     <EntitySetMapping Name="Proje">
       <EntityTypeMapping TypeName="PersonalWebPageDBModel.Proje">
         <MappingFragment StoreEntitySet="Proje">
-          <ScalarProperty Name="projeResim" ColumnName="projeResim" />
           <ScalarProperty Name="projeLink" ColumnName="projeLink" />
           <ScalarProperty Name="projeBaslik" ColumnName="projeBaslik" />
           <ScalarProperty Name="projeID" ColumnName="projeID" />

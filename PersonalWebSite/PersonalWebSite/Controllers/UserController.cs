@@ -13,12 +13,6 @@ namespace PersonalWebSite.Controllers
     public class UserController : Controller
     {
         Models.PersonalWebPageDBEntities db = new Models.PersonalWebPageDBEntities();
-        [HttpGet]
-        public ActionResult UserList()
-        {
-            var model = db.Uye.ToList();
-            return View(model);
-        }
 
         public ActionResult Register()
         {
@@ -79,21 +73,6 @@ namespace PersonalWebSite.Controllers
 
             db.SaveChanges();
             return View("UserProfile",UpdateModel);
-        }
-        
-        public ActionResult RemoveUser(int id)
-        {
-            var RemoveUser = db.Uye.Find(id);
-            var RemoveUserDetail = db.UyeDetay.Find(RemoveUser.uyeDetayBilgiID);
-            foreach (var yorum in RemoveUser.Yorum.ToList())
-            {
-                db.Yorum.Remove(yorum);
-
-            }
-            db.Uye.Remove(RemoveUser);
-            db.UyeDetay.Remove(RemoveUserDetail);
-            db.SaveChanges();
-            return RedirectToAction("UserList");
         }
 
 

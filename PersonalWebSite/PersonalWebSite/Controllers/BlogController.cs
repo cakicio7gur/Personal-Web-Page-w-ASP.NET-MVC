@@ -6,46 +6,55 @@ using System.Web.Mvc;
 using PersonalWebSite.Models;
 using PagedList;
 using PagedList.Mvc;
+
 namespace PersonalWebSite.Controllers
 {
     public class BlogController : Controller
     {
         Models.PersonalWebPageDBEntities db = new Models.PersonalWebPageDBEntities();
-        PersonalWebPageDBEntities Veri = new PersonalWebPageDBEntities();
-
-        public ActionResult Index(int? SayfaNo)
+        public ActionResult Index()
         {
-            int _sayfaNo = SayfaNo ?? 1;
-            var MakaleListesi = Veri.Makale.OrderByDescending(m =>m.makaleID).ToPagedList<Makale>(_sayfaNo, 3);
-            return View(MakaleListesi);
+            var model = db.Makale.ToList();
+            return View(model);
         }
         public ActionResult GetMakaleById(int id)
         {
+            var yorumlar = db.Yorum.Where(m => m.makaleID == id).ToList();
+            ViewBag.makaleyeAitYorumlar = yorumlar;
             var model = db.Makale.Find(id);
             model.MakaleDetay.goruntulenmeSayisi++;
             db.SaveChanges();
             return View(model);
         }
-        public ActionResult GetMakaleByKategori(int kategoriID)
+        public ActionResult GetBlogBySearch(string search)
         {
-            var blog = db.Makale.Where(x => x.kategoriID == kategoriID).ToList();
-            return View("Index", blog);
-        }
-        public ActionResult GetMakaleByTarget(string target = null)
-        {
-            List<Models.Makale> Makale = new List<Models.Makale>();
+            List<Models.Makale> makaleList = new List<Models.Makale>();
             foreach (var makale in db.Makale.ToList())
             {
-                foreach (var icerik in makale.MakaleDetay.icerik.ToList())
+                if ((makale.MakaleDetay.baslik.ToLower().Contains(search.ToLower())|| makale.MakaleDetay.icerik.ToLower().Contains(search.ToLower())
+                    || makale.Kategori.kategori1.ToLower().Contains(search.ToLower())) == true)
                 {
-                    if (icerik.ToString().Contains(target)==true)
-                    {
-                        Makale.Add(makale);
-                    }
+                    makaleList.Add(makale);
                 }
             }
-            return RedirectToAction("Index", Makale);
+            return View("Index", makaleList);
         }
-
+        public ActionResult GetBlogByKategori(int id)
+        {
+            List<Models.Makale> makaleList = new List<Models.Makale>();
+            foreach (var makale in db.Makale.ToList())
+            {
+                if(makale.kategoriID== id)
+                {
+                    makaleList.Add(makale);
+                }
+            }
+            return View("Index", makaleList);
+        }
+        public int GetBlogCountAsKategori(int id)
+        {
+            var makaleSayisi = db.Makale.Where(x => x.kategoriID == id).Count();
+            return makaleSayisi;
+        }
     }
 }
