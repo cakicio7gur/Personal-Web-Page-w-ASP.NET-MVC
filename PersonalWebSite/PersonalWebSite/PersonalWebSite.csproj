@@ -147,52 +147,52 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Kategori.cs">
-      <DependentUpon>PersonalWPModel.tt</DependentUpon>
+      <DependentUpon>PWPageDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Makale.cs">
-      <DependentUpon>PersonalWPModel.tt</DependentUpon>
+      <DependentUpon>PWPageDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MakaleDetay.cs">
-      <DependentUpon>PersonalWPModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PersonalWPModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PersonalWPModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PersonalWPModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PersonalWPModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PersonalWPModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PersonalWPModel.edmx</DependentUpon>
+      <DependentUpon>PWPageDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Proje.cs">
-      <DependentUpon>PersonalWPModel.tt</DependentUpon>
+      <DependentUpon>PWPageDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PWPageDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PWPageDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PWPageDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PWPageDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PWPageDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PWPageDBModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Rol.cs">
-      <DependentUpon>PersonalWPModel.tt</DependentUpon>
+      <DependentUpon>PWPageDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>PersonalWPModel.tt</DependentUpon>
+      <DependentUpon>PWPageDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>PersonalWPModel.tt</DependentUpon>
+      <DependentUpon>PWPageDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>PersonalWPModel.tt</DependentUpon>
+      <DependentUpon>PWPageDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Uye.cs">
-      <DependentUpon>PersonalWPModel.tt</DependentUpon>
+      <DependentUpon>PWPageDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UyeDetay.cs">
-      <DependentUpon>PersonalWPModel.tt</DependentUpon>
+      <DependentUpon>PWPageDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Yorum.cs">
-      <DependentUpon>PersonalWPModel.tt</DependentUpon>
+      <DependentUpon>PWPageDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -403,15 +403,15 @@
     <Content Include="Content\UserList\main.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Models\PersonalWPModel.Context.tt">
+    <Content Include="Models\PWPageDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PersonalWPModel.Context.cs</LastGenOutput>
-      <DependentUpon>PersonalWPModel.edmx</DependentUpon>
+      <DependentUpon>PWPageDBModel.edmx</DependentUpon>
+      <LastGenOutput>PWPageDBModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\PersonalWPModel.tt">
+    <Content Include="Models\PWPageDBModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PersonalWPModel.edmx</DependentUpon>
-      <LastGenOutput>PersonalWPModel.cs</LastGenOutput>
+      <DependentUpon>PWPageDBModel.edmx</DependentUpon>
+      <LastGenOutput>PWPageDBModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -541,13 +541,6 @@
     <Content Include="Content\scss\theme\_price.scss" />
     <Content Include="Content\scss\theme\_reset.scss" />
     <Content Include="Content\scss\theme\_variables.scss" />
-    <EntityDeploy Include="Models\PersonalWPModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PersonalWPModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\PersonalWPModel.edmx.diagram">
-      <DependentUpon>PersonalWPModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\UserContents\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\UserContents\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\UserContents\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
@@ -635,6 +628,13 @@
     <Content Include="Content\UserContents\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="Content\UserContents\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Content\UserContents\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <EntityDeploy Include="Models\PWPageDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PWPageDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\PWPageDBModel.edmx.diagram">
+      <DependentUpon>PWPageDBModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -675,8 +675,8 @@
     <Content Include="Views\Admin\Works.cshtml" />
     <Content Include="Views\Admin\WorksList.cshtml" />
     <Content Include="Views\Admin\BlogsList.cshtml" />
-    <Content Include="Views\Admin\NewBlog.cshtml" />
     <Content Include="Views\Admin\CommentsList.cshtml" />
+    <Content Include="Views\Admin\AddBlog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

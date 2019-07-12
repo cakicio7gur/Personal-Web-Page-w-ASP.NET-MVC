@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="PersonalWebPageDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="PWebPageDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Kategori">
           <Key>
             <PropertyRef Name="kategoriID" />
@@ -27,7 +27,7 @@
           <Property Name="makaleDetayID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="baslik" Type="nvarchar" MaxLength="500" />
           <Property Name="icerik" Type="nvarchar(max)" />
-          <Property Name="fotograf" Type="nvarchar" MaxLength="500" />
+          <Property Name="fotograf" Type="nvarchar" MaxLength="100" />
           <Property Name="yayınlanmaTarihi" Type="date" />
           <Property Name="goruntulenmeSayisi" Type="int" />
         </EntityType>
@@ -176,7 +176,7 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <EntityContainer Name="PersonalWebPageDBModelStoreContainer">
+        <EntityContainer Name="PWebPageDBModelStoreContainer">
           <EntitySet Name="Kategori" EntityType="Self.Kategori" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Makale" EntityType="Self.Makale" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MakaleDetay" EntityType="Self.MakaleDetay" Schema="dbo" store:Type="Tables" />
@@ -207,10 +207,11 @@
             <End Role="Yorum" EntitySet="Yorum" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="PersonalWebPageDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="PWebPageDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Kategori">
           <Key>
             <PropertyRef Name="kategoriID" />
@@ -237,10 +238,18 @@
           <Property Name="makaleDetayID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="baslik" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="icerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="fotograf" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="fotograf" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="yayınlanmaTarihi" Type="DateTime" Precision="0" />
           <Property Name="goruntulenmeSayisi" Type="Int32" />
           <NavigationProperty Name="Makale" Relationship="Self.FK_Makale_MakaleDetay" FromRole="MakaleDetay" ToRole="Makale" />
+        </EntityType>
+        <EntityType Name="Proje">
+          <Key>
+            <PropertyRef Name="projeID" />
+          </Key>
+          <Property Name="projeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="projeBaslik" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="projeLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -287,11 +296,11 @@
             <PropertyRef Name="yorumID" />
           </Key>
           <Property Name="yorumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adSoyad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="icerik" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="makaleID" Type="Int32" />
           <Property Name="tarih" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Makale" Relationship="Self.FK_Yorum_Makale" FromRole="Yorum" ToRole="Makale" />
-          <Property Name="adSoyad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Makale_Kategori">
           <End Role="Kategori" Type="Self.Kategori" Multiplicity="0..1" />
@@ -353,10 +362,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PersonalWebPageDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PersonalWebPageDBEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Kategori" EntityType="Self.Kategori" />
           <EntitySet Name="Makale" EntityType="Self.Makale" />
           <EntitySet Name="MakaleDetay" EntityType="Self.MakaleDetay" />
+          <EntitySet Name="Proje" EntityType="Self.Proje" />
           <EntitySet Name="Rol" EntityType="Self.Rol" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Uye" EntityType="Self.Uye" />
@@ -398,11 +408,11 @@
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PersonalWebPageDBModel.sp_helpdiagramdefinition_Result)">
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PWebPageDBModel.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PersonalWebPageDBModel.sp_helpdiagrams_Result)">
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PWebPageDBModel.sp_helpdiagrams_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -412,7 +422,6 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="Proje" EntityType="PersonalWebPageDBModel.Proje" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -425,22 +434,14 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <EntityType Name="Proje">
-          <Key>
-            <PropertyRef Name="projeID" />
-          </Key>
-          <Property Name="projeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="projeBaslik" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="projeLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PersonalWebPageDBModelStoreContainer" CdmEntityContainer="PersonalWebPageDBEntities">
+        <EntityContainerMapping StorageEntityContainer="PWebPageDBModelStoreContainer" CdmEntityContainer="PersonalWebPageDBEntities1">
           <EntitySetMapping Name="Kategori">
-            <EntityTypeMapping TypeName="PersonalWebPageDBModel.Kategori">
+            <EntityTypeMapping TypeName="PWebPageDBModel.Kategori">
               <MappingFragment StoreEntitySet="Kategori">
                 <ScalarProperty Name="kategoriID" ColumnName="kategoriID" />
                 <ScalarProperty Name="kategori1" ColumnName="kategori" />
@@ -448,7 +449,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Makale">
-            <EntityTypeMapping TypeName="PersonalWebPageDBModel.Makale">
+            <EntityTypeMapping TypeName="PWebPageDBModel.Makale">
               <MappingFragment StoreEntitySet="Makale">
                 <ScalarProperty Name="makaleID" ColumnName="makaleID" />
                 <ScalarProperty Name="kategoriID" ColumnName="kategoriID" />
@@ -457,7 +458,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MakaleDetay">
-            <EntityTypeMapping TypeName="PersonalWebPageDBModel.MakaleDetay">
+            <EntityTypeMapping TypeName="PWebPageDBModel.MakaleDetay">
               <MappingFragment StoreEntitySet="MakaleDetay">
                 <ScalarProperty Name="makaleDetayID" ColumnName="makaleDetayID" />
                 <ScalarProperty Name="baslik" ColumnName="baslik" />
@@ -468,8 +469,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Proje">
+            <EntityTypeMapping TypeName="PWebPageDBModel.Proje">
+              <MappingFragment StoreEntitySet="Proje">
+                <ScalarProperty Name="projeID" ColumnName="projeID" />
+                <ScalarProperty Name="projeBaslik" ColumnName="projeBaslik" />
+                <ScalarProperty Name="projeLink" ColumnName="projeLink" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Rol">
-            <EntityTypeMapping TypeName="PersonalWebPageDBModel.Rol">
+            <EntityTypeMapping TypeName="PWebPageDBModel.Rol">
               <MappingFragment StoreEntitySet="Rol">
                 <ScalarProperty Name="rolID" ColumnName="rolID" />
                 <ScalarProperty Name="rol1" ColumnName="rol" />
@@ -477,7 +487,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="PersonalWebPageDBModel.sysdiagrams">
+            <EntityTypeMapping TypeName="PWebPageDBModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -488,7 +498,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Uye">
-            <EntityTypeMapping TypeName="PersonalWebPageDBModel.Uye">
+            <EntityTypeMapping TypeName="PWebPageDBModel.Uye">
               <MappingFragment StoreEntitySet="Uye">
                 <ScalarProperty Name="uyeID" ColumnName="uyeID" />
                 <ScalarProperty Name="uyeDetayBilgiID" ColumnName="uyeDetayBilgiID" />
@@ -498,7 +508,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UyeDetay">
-            <EntityTypeMapping TypeName="PersonalWebPageDBModel.UyeDetay">
+            <EntityTypeMapping TypeName="PWebPageDBModel.UyeDetay">
               <MappingFragment StoreEntitySet="UyeDetay">
                 <ScalarProperty Name="uyeDetayBilgiID" ColumnName="uyeDetayBilgiID" />
                 <ScalarProperty Name="eMail" ColumnName="eMail" />
@@ -509,30 +519,30 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Yorum">
-            <EntityTypeMapping TypeName="PersonalWebPageDBModel.Yorum">
+            <EntityTypeMapping TypeName="PWebPageDBModel.Yorum">
               <MappingFragment StoreEntitySet="Yorum">
-                <ScalarProperty Name="adSoyad" ColumnName="adSoyad" />
                 <ScalarProperty Name="yorumID" ColumnName="yorumID" />
+                <ScalarProperty Name="adSoyad" ColumnName="adSoyad" />
                 <ScalarProperty Name="icerik" ColumnName="icerik" />
                 <ScalarProperty Name="makaleID" ColumnName="makaleID" />
                 <ScalarProperty Name="tarih" ColumnName="tarih" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="PersonalWebPageDBModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="PersonalWebPageDBModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="PersonalWebPageDBModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="PersonalWebPageDBModel.Store.sp_helpdiagramdefinition">
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="PWebPageDBModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="PWebPageDBModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="PWebPageDBModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="PWebPageDBModel.Store.sp_helpdiagramdefinition">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="PersonalWebPageDBModel.sp_helpdiagramdefinition_Result">
+              <ComplexTypeMapping TypeName="PWebPageDBModel.sp_helpdiagramdefinition_Result">
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PersonalWebPageDBModel.Store.sp_helpdiagrams">
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PWebPageDBModel.Store.sp_helpdiagrams">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="PersonalWebPageDBModel.sp_helpdiagrams_Result">
+              <ComplexTypeMapping TypeName="PWebPageDBModel.sp_helpdiagrams_Result">
                 <ScalarProperty Name="Database" ColumnName="Database" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -541,17 +551,8 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PersonalWebPageDBModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PersonalWebPageDBModel.Store.sp_upgraddiagrams" />
-          <EntitySetMapping Name="Proje">
-            <EntityTypeMapping TypeName="PersonalWebPageDBModel.Proje">
-              <MappingFragment StoreEntitySet="Proje">
-                <ScalarProperty Name="projeLink" ColumnName="projeLink" />
-                <ScalarProperty Name="projeBaslik" ColumnName="projeBaslik" />
-                <ScalarProperty Name="projeID" ColumnName="projeID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PWebPageDBModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PWebPageDBModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

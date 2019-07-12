@@ -9,7 +9,7 @@ namespace PersonalWebSite.Controllers
 {
     public class WorksController : Controller
     {
-        Models.PersonalWebPageDBEntities db = new Models.PersonalWebPageDBEntities();
+        Models.PersonalWebPageDBEntities1 db = new Models.PersonalWebPageDBEntities1();
         public ActionResult Index()
         {
             var model = db.Proje.ToList();

@@ -9,7 +9,7 @@ namespace PersonalWebSite.Controllers
 {
     public class KategoriController : Controller
     {
-        Models.PersonalWebPageDBEntities db = new Models.PersonalWebPageDBEntities();
+        Models.PersonalWebPageDBEntities1 db = new Models.PersonalWebPageDBEntities1();
         [HttpGet]
         public ActionResult KategoriList()
         {

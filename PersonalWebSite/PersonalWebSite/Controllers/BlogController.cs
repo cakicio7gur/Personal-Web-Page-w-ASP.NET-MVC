@@ -11,7 +11,7 @@ namespace PersonalWebSite.Controllers
 {
     public class BlogController : Controller
     {
-        Models.PersonalWebPageDBEntities db = new Models.PersonalWebPageDBEntities();
+        Models.PersonalWebPageDBEntities1 db = new Models.PersonalWebPageDBEntities1();
         public ActionResult Index()
         {
             var model = db.Makale.ToList();

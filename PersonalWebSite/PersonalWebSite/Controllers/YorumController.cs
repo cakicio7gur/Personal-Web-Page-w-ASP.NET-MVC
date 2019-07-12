@@ -9,7 +9,7 @@ namespace PersonalWebSite.Controllers
 {
     public class YorumController : Controller
     {
-        Models.PersonalWebPageDBEntities db = new Models.PersonalWebPageDBEntities();
+        Models.PersonalWebPageDBEntities1 db = new Models.PersonalWebPageDBEntities1();
         public ActionResult Index()
         {
             var model = db.Yorum.ToList();

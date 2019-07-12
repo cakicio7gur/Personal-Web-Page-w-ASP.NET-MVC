@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="PersonalWebPageDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="PWebPageDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Kategori">
     <Key>
       <PropertyRef Name="kategoriID" />
@@ -14,21 +14,30 @@
     </Key>
     <Property Name="makaleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="kategoriID" Type="Int32" />
+    <Property Name="makaleDetayID" Type="Int32" />
     <NavigationProperty Name="Kategori" Relationship="Self.FK_Makale_Kategori" FromRole="Makale" ToRole="Kategori" />
     <NavigationProperty Name="MakaleDetay" Relationship="Self.FK_Makale_MakaleDetay" FromRole="Makale" ToRole="MakaleDetay" />
     <NavigationProperty Name="Yorum" Relationship="Self.FK_Yorum_Makale" FromRole="Makale" ToRole="Yorum" />
   </EntityType>
   <EntityType Name="MakaleDetay">
     <Key>
-      <PropertyRef Name="makaleID" />
+      <PropertyRef Name="makaleDetayID" />
     </Key>
+    <Property Name="makaleDetayID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="baslik" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="icerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="fotograf" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="yayınlanmaTarihi" Type="DateTime" Precision="0" />
     <Property Name="goruntulenmeSayisi" Type="Int32" />
     <NavigationProperty Name="Makale" Relationship="Self.FK_Makale_MakaleDetay" FromRole="MakaleDetay" ToRole="Makale" />
-    <Property Name="makaleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="Proje">
+    <Key>
+      <PropertyRef Name="projeID" />
+    </Key>
+    <Property Name="projeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="projeBaslik" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="projeLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Rol">
     <Key>
@@ -75,11 +84,11 @@
       <PropertyRef Name="yorumID" />
     </Key>
     <Property Name="yorumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="adSoyad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="icerik" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="makaleID" Type="Int32" />
     <Property Name="tarih" Type="DateTime" Precision="0" />
     <NavigationProperty Name="Makale" Relationship="Self.FK_Yorum_Makale" FromRole="Yorum" ToRole="Makale" />
-    <Property Name="adSoyad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_Makale_Kategori">
     <End Role="Kategori" Type="Self.Kategori" Multiplicity="0..1" />
@@ -97,8 +106,12 @@
     <End Role="MakaleDetay" Type="Self.MakaleDetay" Multiplicity="0..1" />
     <End Role="Makale" Type="Self.Makale" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="MakaleDetay" />
-      <Dependent Role="Makale" />
+      <Principal Role="MakaleDetay">
+        <PropertyRef Name="makaleDetayID" />
+      </Principal>
+      <Dependent Role="Makale">
+        <PropertyRef Name="makaleDetayID" />
+      </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Yorum_Makale">
@@ -137,10 +150,11 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="PersonalWebPageDBEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="PersonalWebPageDBEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Kategori" EntityType="Self.Kategori" />
     <EntitySet Name="Makale" EntityType="Self.Makale" />
     <EntitySet Name="MakaleDetay" EntityType="Self.MakaleDetay" />
+    <EntitySet Name="Proje" EntityType="Self.Proje" />
     <EntitySet Name="Rol" EntityType="Self.Rol" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="Uye" EntityType="Self.Uye" />
@@ -182,11 +196,11 @@
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PersonalWebPageDBModel.sp_helpdiagramdefinition_Result)">
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PWebPageDBModel.sp_helpdiagramdefinition_Result)">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PersonalWebPageDBModel.sp_helpdiagrams_Result)">
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PWebPageDBModel.sp_helpdiagrams_Result)">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -196,7 +210,6 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
-    <EntitySet Name="Proje" EntityType="PersonalWebPageDBModel.Proje" />
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -209,12 +222,4 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
-  <EntityType Name="Proje">
-    <Key>
-      <PropertyRef Name="projeID" />
-    </Key>
-    <Property Name="projeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="projeBaslik" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="projeLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-  </EntityType>
 </Schema>

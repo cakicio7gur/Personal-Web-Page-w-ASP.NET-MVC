@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f9630a8de1f64e41823663272df96e27" Name="Diagram1">
+        <EntityTypeShape EntityType="PWebPageDBModel.Kategori" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PWebPageDBModel.Makale" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PWebPageDBModel.MakaleDetay" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PWebPageDBModel.Proje" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PWebPageDBModel.Rol" Width="1.5" PointX="2.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PWebPageDBModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PWebPageDBModel.Uye" Width="1.5" PointX="5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PWebPageDBModel.UyeDetay" Width="1.5" PointX="2.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PWebPageDBModel.Yorum" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="PWebPageDBModel.FK_Makale_Kategori" ManuallyRouted="false" />
+        <AssociationConnector Association="PWebPageDBModel.FK_Makale_MakaleDetay" ManuallyRouted="false" />
+        <AssociationConnector Association="PWebPageDBModel.FK_Yorum_Makale" ManuallyRouted="false" />
+        <AssociationConnector Association="PWebPageDBModel.FK_Uye_Rol" ManuallyRouted="false" />
+        <AssociationConnector Association="PWebPageDBModel.FK_Uye_UyeDetay" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

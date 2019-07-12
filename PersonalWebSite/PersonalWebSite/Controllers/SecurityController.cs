@@ -8,7 +8,7 @@ namespace PersonalWebSite.Controllers
 {
     public class SecurityController : Controller
     {
-        Models.PersonalWebPageDBEntities db = new Models.PersonalWebPageDBEntities();
+        Models.PersonalWebPageDBEntities1 db = new Models.PersonalWebPageDBEntities1();
 
         [HttpGet]
         public ActionResult Login()

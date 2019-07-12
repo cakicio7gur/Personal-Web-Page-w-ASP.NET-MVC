@@ -1,9 +1,8 @@
-﻿
+﻿@model PersonalWebSite.Models.Proje
 @{
     ViewBag.Title = "Works";
     Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
 }
-
 <div class="content">
     <div class="row">
         <div class="col-md-12">
@@ -12,12 +11,14 @@
                     <h5 class="card-title">New Project</h5>
                 </div>
                 <div class="card-body">
+                    @using (Html.BeginForm("UpdateAndAddWorks", "Admin", FormMethod.Post))
+                    {
                     <form method="post">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Project Title</label>
-                                    <input name="projeBaslik" type="text" class="form-control" placeholder="Stock Tracking System ">
+                                    @Html.TextBoxFor(m => m.projeBaslik, new { @class = "form-control"})
                                 </div>
                             </div>
                         </div>
@@ -25,17 +26,19 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Project Link</label>
-                                    <input name="projeLink" type="text" class="form-control" placeholder="www.123.com">
+                                    @Html.TextBoxFor(m => m.projeLink, new { @class = "form-control"})
                                 </div>
                             </div>
                         </div>
+                        @Html.HiddenFor(m => m.projeID)
                         <div class="row">
                             <div class="update ml-auto mr-auto">
-                                <button type="submit" class="btn btn-primary btn-round">ADD PROJECT</button>
+                                <button type="submit" class="btn btn-primary btn-round">ADD / UPDATE PROJECT</button>
                             </div>
                         </div>
                     </form>
-                </div>
+                    }
+                    </div>
             </div>
         </div>
     </div>

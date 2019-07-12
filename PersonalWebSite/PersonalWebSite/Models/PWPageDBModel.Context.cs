@@ -15,10 +15,10 @@ namespace PersonalWebSite.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class PersonalWebPageDBEntities : DbContext
+    public partial class PersonalWebPageDBEntities1 : DbContext
     {
-        public PersonalWebPageDBEntities()
-            : base("name=PersonalWebPageDBEntities")
+        public PersonalWebPageDBEntities1()
+            : base("name=PersonalWebPageDBEntities1")
         {
         }
     
@@ -30,12 +30,12 @@ namespace PersonalWebSite.Models
         public virtual DbSet<Kategori> Kategori { get; set; }
         public virtual DbSet<Makale> Makale { get; set; }
         public virtual DbSet<MakaleDetay> MakaleDetay { get; set; }
+        public virtual DbSet<Proje> Proje { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Uye> Uye { get; set; }
         public virtual DbSet<UyeDetay> UyeDetay { get; set; }
         public virtual DbSet<Yorum> Yorum { get; set; }
-        public virtual DbSet<Proje> Proje { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

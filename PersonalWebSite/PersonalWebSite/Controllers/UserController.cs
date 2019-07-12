@@ -12,7 +12,7 @@ namespace PersonalWebSite.Controllers
 {
     public class UserController : Controller
     {
-        Models.PersonalWebPageDBEntities db = new Models.PersonalWebPageDBEntities();
+        Models.PersonalWebPageDBEntities1 db = new Models.PersonalWebPageDBEntities1();
 
         public ActionResult Register()
         {
