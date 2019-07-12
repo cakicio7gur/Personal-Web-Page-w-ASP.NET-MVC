@@ -17,6 +17,14 @@ namespace PersonalWebSite.Controllers
         public ActionResult Index()
         {
             var model = db.Makale.ToList();
+            var uyeSayisi = db.Uye.Count();
+            ViewBag.toplamUyeSayisi = uyeSayisi;
+            var projeSayisi = db.Proje.Count();
+            ViewBag.toplamProjeSayisi = projeSayisi;
+            var makaleSayisi = db.Makale.Count();
+            ViewBag.toplamMakaleSayisi = makaleSayisi;
+            var yorumSayisi = db.Yorum.Count();
+            ViewBag.toplamYorumSayisi = yorumSayisi;
             return View(model);
         }
 
@@ -79,7 +87,7 @@ namespace PersonalWebSite.Controllers
                     Eskimodel.projeLink = proje.projeLink;
                 }
                 db.SaveChanges();
-                return RedirectToAction("Works");
+                return RedirectToAction("WorksList");
         }
         public ActionResult RemoveProject(int id)
         {
