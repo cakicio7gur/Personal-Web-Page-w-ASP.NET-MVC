@@ -131,6 +131,7 @@ namespace PersonalWebSite.Controllers
 
         }
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult UpdateAndAddBlog(Makale makale)
         {
             var ktgr = db.Kategori.Where(m => m.kategoriID == makale.Kategori.kategoriID).FirstOrDefault();
@@ -152,18 +153,20 @@ namespace PersonalWebSite.Controllers
                 Eskimodel.kategoriID = ktgr.kategoriID;
             }
             db.SaveChanges();
-            return RedirectToAction("GetBlogDetailByID", "Admin", new { id = makale.makaleID });
+            return RedirectToAction("BlogsList");
         }
         public ActionResult RemoveBlog(int id)
         {
             var RemoveBlog = db.Makale.Find(id);
-            if (RemoveBlog != null)
+            var RemoveBlogDetail = db.MakaleDetay.Find(RemoveBlog.makaleDetayID);
+            if (RemoveBlog != null && RemoveBlogDetail!=null)
             {
                 foreach (var yorum in RemoveBlog.Yorum.ToList())
                 {
                     db.Yorum.Remove(yorum);
                 }
                 db.Makale.Remove(RemoveBlog);
+                db.MakaleDetay.Remove(RemoveBlogDetail);
                 db.SaveChanges();
                 return RedirectToAction("BlogsList");
             }

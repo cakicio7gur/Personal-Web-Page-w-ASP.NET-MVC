@@ -3,7 +3,9 @@
     ViewBag.Title = "AddBlog";
     Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
 }
-
+<head>
+    <script src="~/ckeditor/ckeditor.js"></script>
+</head>
 <div class="content">
     <div class="row">
         <div class="col-md-12">
@@ -51,7 +53,9 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Blog İçeriği</label>
-                                        @Html.TextAreaFor(m => m.MakaleDetay.icerik, new { @class = "form-control", rows = "10" })
+                                        @Html.TextAreaFor(m => m.MakaleDetay.icerik, new { @class = "ckeditor" ,rows = "10" })
+                                        <script>
+                                        </script>
                                     </div>
                                 </div>
                             </div>

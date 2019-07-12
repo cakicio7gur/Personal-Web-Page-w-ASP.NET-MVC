@@ -21,6 +21,8 @@ namespace PersonalWebSite.Controllers
         {
             var yorumlar = db.Yorum.Where(m => m.makaleID == id).ToList();
             ViewBag.makaleyeAitYorumlar = yorumlar;
+            var yorumSayisi = db.Yorum.Where(m => m.makaleID == id).Count();
+            ViewBag.makaleyeAitYorumSayisi = yorumSayisi;
             var model = db.Makale.Find(id);
             model.MakaleDetay.goruntulenmeSayisi++;
             db.SaveChanges();

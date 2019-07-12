@@ -3,7 +3,7 @@
     ViewBag.Title = "GetMakaleById";
     Layout = "~/Views/Shared/_Layout.cshtml";
     Session["MakaleID"] = @Model.makaleID;
-    var db = new PersonalWebSite.Models.PersonalWebPageDBEntities();
+    var db = new PersonalWebSite.Models.PersonalWebPageDBEntities1();
 }
 
 <!DOCTYPE html>
@@ -38,17 +38,18 @@
                         </div>
                         <div class="col-lg-3  col-md-3 meta-details">
                             <div class="user-details row">
-                                <p class="user-name col-lg-12 col-md-12 col-6"><a href="#">@Model.Kategori.kategori1</a> <span class="lnr lnr-bookmark"></span></p>
-                                <p class="user-name col-lg-12 col-md-12 col-6"><a href="#">Özgür Çakıcı</a> <span class="lnr lnr-user"></span></p>
+                                <p class="user-name col-lg-12 col-md-12 col-6"><a>@Model.Kategori.kategori1</a> <span class="lnr lnr-bookmark"></span></p>
+                                <p class="user-name col-lg-12 col-md-12 col-6"><a>Özgür Çakıcı</a> <span class="lnr lnr-user"></span></p>
                                 <p class="date col-lg-12 col-md-12 col-6"><a>@Model.MakaleDetay.yayınlanmaTarihi.Value.ToString("dd MMMM yyyy")</a> <span class="lnr lnr-calendar-full"></span></p>
                                 <p class="view col-lg-12 col-md-12 col-6"><a>@Model.MakaleDetay.goruntulenmeSayisi görüntülenme</a> <span class="lnr lnr-eye"></span></p>
-                                <p class="comments col-lg-12 col-md-12 col-6"><a>6 Yorum</a> <span class="lnr lnr-bubble"></span></p>
+                                <p class="comments col-lg-12 col-md-12 col-6"><a>@ViewBag.makaleyeAitYorumSayisi Yorum</a> <span class="lnr lnr-bubble"></span></p>
+
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-9">
                             <h3 class="mt-20 mb-20">@Model.MakaleDetay.baslik</h3>
                             <p class="excert">
-                                @Model.MakaleDetay.icerik
+                                @Html.Raw(Model.MakaleDetay.icerik)
                                 Veri Bilimi, hiç şüphesiz günümüzün en popüler araştırma ve uygulama alanlarının başında geliyor. Doğası gereği disiplinlerarası bir alan olarak kabul edilmesi gereken Veri Bilimi’ni öğrenmek isteyenlerin sayısı da her geçen gün artıyor. Datajarlabs olarak, verdiğimiz Veri Bilimi eğitimleri sayesinde edindiğimiz tecrübeler ışığında, Veri Bilimi’ni öğrenmek isteyenlere yol göstermesi açısından bir yol haritası oluşturmaya ve takipçilerimizle paylaşmaya karar verdik.
                                 Veri Bilimi, hiç şüphesiz günümüzün en popüler araştırma ve uygulama alanlarının başında geliyor. Doğası gereği disiplinlerarası bir alan olarak kabul edilmesi gereken Veri Bilimi’ni öğrenmek isteyenlerin sayısı da her geçen gün artıyor. Datajarlabs olarak, verdiğimiz Veri Bilimi eğitimleri sayesinde edindiğimiz tecrübeler ışığında, Veri Bilimi’ni öğrenmek isteyenlere yol göstermesi açısından bir yol haritası oluşturmaya ve takipçilerimizle paylaşmaya karar verdik.
                             </p>

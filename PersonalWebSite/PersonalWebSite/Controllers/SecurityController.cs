@@ -28,13 +28,13 @@ namespace PersonalWebSite.Controllers
                 Session["UyeId"] = user.uyeID;*/
                 if (user.Rol.rol1 == "Admin")
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Admin");
                 }
                 else
                 {
 
                 }
-                return RedirectToAction("Index", "Works");
+                return RedirectToAction("Index", "Home");
             }
                 return View();
         }
