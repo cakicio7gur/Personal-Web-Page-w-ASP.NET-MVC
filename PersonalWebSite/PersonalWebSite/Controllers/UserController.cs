@@ -23,12 +23,20 @@ namespace PersonalWebSite.Controllers
         public ActionResult Registration(Uye uye)
         {
             if(!ModelState.IsValid)
-            { 
-                uye.rolID = 2;
-                uye.UyeDetay.fotograf = "user.png";
-                db.Uye.Add(uye);
-                db.SaveChanges();
-                return RedirectToAction("Login", "Security");
+            {
+                try
+                {
+                    uye.rolID = 2;
+                    uye.UyeDetay.fotograf = "user.png";
+                    db.Uye.Add(uye);
+                    db.SaveChanges();
+                    return RedirectToAction("Login", "Security");
+                }
+                catch
+                {
+                    return RedirectToAction("Register", "User");
+
+                }
             }
             else
             {
