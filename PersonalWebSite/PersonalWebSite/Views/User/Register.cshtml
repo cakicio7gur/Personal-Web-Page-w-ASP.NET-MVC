@@ -1,4 +1,4 @@
-﻿
+﻿@model PersonalWebSite.Models.Uye
 @{
     Layout = null;
 }
@@ -30,7 +30,7 @@
             <div class="row align-items-center justify-content-between d-flex">
                 <div></div>
                 <div id="logo">
-                    <a href="/Home/Index"><img src="/Content/img/22_40.png" alt="" title="" /></a>
+                    <a href="/Home/Index"><img src="/Content/img/22_40.png" title="AnaSayfa" /></a>
                 </div>
                 <div></div>
 
@@ -41,25 +41,34 @@
         <div class="container">
             <div class="comment-form form">
                 <h4>ÜYE OL</h4>
-                <form action="/User/Registration" class="form-group" method="post">
+                @using (Html.BeginForm("Registration", "User", FormMethod.Post))
+                {
+                    @Html.ValidationSummary(true)
+                <form class="form-group" method="post">
                     <div class="form-group col-lg-12s col-md-12">
-                        <input type="text" class="form-control" name="adSoyad" placeholder="Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Name'">
+                        @Html.TextBoxFor(m => m.adSoyad,new { @class = "form-control", placeholder = "Name",required = "required" })
+                        @Html.ValidationMessageFor(m => m.adSoyad, "", new { @style = "color:red" })
                     </div>
                     <div class="form-group col-lg-12 col-md-12">
-                        <input type="text" class="form-control" name="kullaniciAdi" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+                        @Html.TextBoxFor(m => m.UyeDetay.kullaniciAdi, new { @class = "form-control", placeholder = "Username", required = "required" })
+                        @Html.ValidationMessageFor(m => m.UyeDetay.kullaniciAdi, "", new { @style = "color:red" })
                     </div>
                     <div class="form-group col-lg-12 col-md-12">
-                        <input type="text" class="form-control" name="eMail" placeholder="Email Adress" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Adress'">
+                        @Html.TextBoxFor(m => m.UyeDetay.eMail, new { @class = "form-control", placeholder = "Email Adress", required = "required" })
+                        @Html.ValidationMessageFor(m => m.UyeDetay.eMail, "", new { @style = "color:red" })
                     </div>
                     <div class="form-group col-lg-12 col-md-12">
-                        <input type="password" class="form-control" name="sifre" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+                        @Html.PasswordFor(m => m.UyeDetay.sifre, new { @class = "form-control", placeholder = "Password", required = "required" })
+                        @Html.ValidationMessageFor(m => m.UyeDetay.sifre, "", new { @style = "color:red" })
                     </div>
                     <div>
                         <a>Zaten Üye Misin ?</a>
                         <a href="~/Security/Login">Giriş Yap</a>
                     </div>
+                    @Html.HiddenFor(m => m.uyeDetayBilgiID)
                     <button style="margin-top:10px" class="primary-btn text-uppercase">KAYDOL</button>
                 </form>
+                }
             </div>
         </div>
     </section>

@@ -31,26 +31,35 @@
 
                 @using (Html.BeginForm("UpdateUser", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <h4>@Model.adSoyad</h4>
                     <form class="form-group" method="post">
                         <div class="form-group">
                             <label>Profil Fotoğrafı Seç:</label>
-                            <input type="file" name="fotograf" accept=".jpg,.png,.JPG,.jpeg" id="fotograf"/>
+                            <input type="file" name="fotograf" accept=".jpg,.png,.JPG,.jpeg" id="fotograf" />
                         </div>
                         @Html.HiddenFor(m => m.uyeID)
                         @Html.HiddenFor(m => m.uyeDetayBilgiID)
                         @Html.HiddenFor(m => m.rolID)
                         <div class="form-group">
                             @Html.TextBoxFor(m => m.adSoyad, new { @class = "form-control", })
+                            @Html.ValidationMessageFor(m => m.adSoyad, "", new { @style = "color:red" })
                         </div>
                         <div class="form-group">
                             @Html.TextBoxFor(m => m.UyeDetay.kullaniciAdi, new { @class = "form-control", placeholder = "Username" })
+                            @Html.ValidationMessageFor(m => m.UyeDetay.kullaniciAdi, "", new { @style = "color:red" })
+
                         </div>
                         <div class="form-group">
                             @Html.TextBoxFor(m => m.UyeDetay.eMail, new { @class = "form-control", placeholder = "E-Mail" })
+                            @Html.ValidationMessageFor(m => m.UyeDetay.eMail, "", new { @style = "color:red" })
+
                         </div>
                         <div class="form-group">
                             @Html.PasswordFor(m => m.UyeDetay.sifre, new { @class = "form-control", placeholder = "Password" })
+                            @Html.ValidationMessageFor(m => m.UyeDetay.sifre, "", new { @style = "color:red" })
+
                         </div>
                         <button class="primary-btn text-uppercase">GÜNCELLE</button>
                     </form>

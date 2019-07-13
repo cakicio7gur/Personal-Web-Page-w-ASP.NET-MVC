@@ -11,7 +11,8 @@ namespace PersonalWebSite.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class UyeDetay
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,8 +22,18 @@ namespace PersonalWebSite.Models
         }
     
         public int uyeDetayBilgiID { get; set; }
+
+        [Required(ErrorMessage = "Email boþ geçilemez!")]
+        [EmailAddress(ErrorMessage = "Geçersiz Email Addresi")]
         public string eMail { get; set; }
+
+        [Required(ErrorMessage = "Username boþ geçilemez!")]
+        [StringLength(16, ErrorMessage = "Username 3-16 karakter aralýðýnda olmalýdýr!", MinimumLength = 3)]
         public string kullaniciAdi { get; set; }
+
+        [Required(ErrorMessage = "Password boþ geçilemez!")]
+        [DataType(DataType.Password)]   
+        [StringLength(30, ErrorMessage = "Password 6-30 karakter aralýðýnda olmalýdýr!", MinimumLength = 6)]
         public string sifre { get; set; }
         public string fotograf { get; set; }
     

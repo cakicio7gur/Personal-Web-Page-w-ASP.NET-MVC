@@ -4,37 +4,40 @@
     ViewBag.Title = "CommentsList";
     Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
 }
-
-<div class="content">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Blog List</h4>
-                </div>
-                <div class="card-body">
-                    <table class="table">
-                        <thead class="text-primary">
-                            <tr>
-                                <th>AD SOYAD</th>
-                                <th>YORUM</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                            <tr>
-                                <td>@item.adSoyad</td>
-                                <td>@item.icerik</td>
-                                <td class="text-right">
-                                    <a href="/Admin/RemoveComment/@item.yorumID" class="btn btn-danger">DELETE</a>
-                                </td>
-                            </tr>
-                            }
-                        </tbody>
-                    </table>
+<html>
+<body>
+    <div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Blog List</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead class="text-primary">
+                                <tr>
+                                    <th>AD SOYAD</th>
+                                    <th>YORUM</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.adSoyad</td>
+                                        <td>@item.icerik</td>
+                                        <td class="text-right">
+                                            <a href="/Admin/RemoveComment/@item.yorumID" class="btn btn-danger">DELETE</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</body>
+</html>

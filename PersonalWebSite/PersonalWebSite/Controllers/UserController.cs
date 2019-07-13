@@ -16,34 +16,26 @@ namespace PersonalWebSite.Controllers
 
         public ActionResult Register()
         {
-            return View(new Models.Uye());
-        }
-
-        [HttpGet]
-        public ActionResult Registration()
-        {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Registration(FormCollection f)
+        public ActionResult Registration(Uye uye)
         {
-            Uye u = new Uye();
-            UyeDetay ud = new UyeDetay();
+            if(!ModelState.IsValid)
+            { 
+                uye.rolID = 2;
+                uye.UyeDetay.fotograf = "user.png";
+                db.Uye.Add(uye);
+                db.SaveChanges();
+                return RedirectToAction("Login", "Security");
+            }
+            else
+            {
+                return RedirectToAction("Register", "User");
 
-            u.adSoyad = f["adSoyad"].Trim();
-            u.uyeDetayBilgiID = ud.uyeDetayBilgiID;
-            u.rolID = 2;
-            db.Uye.Add(u);
+            }
 
-            ud.kullaniciAdi = f["kullaniciAdi"].Trim();
-            ud.eMail = f["eMail"].Trim();
-            ud.sifre = f["sifre"].Trim();
-            ud.fotograf = "user.png";
-            db.UyeDetay.Add(ud);
-
-            db.SaveChanges();
-            return RedirectToAction("Login", "Security");
         }
         public ActionResult UserProfile(int id)
         {

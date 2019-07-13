@@ -3,75 +3,80 @@
     ViewBag.Title = "AddBlog";
     Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
 }
-<head>
-    <script src="~/ckeditor/ckeditor.js"></script>
-</head>
-<div class="content">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card card-user">
-                <div class="card-header">
-                    <h5 class="card-title">New Blog</h5>
-                </div>
-                <div class="card-body">
-                    @using (Html.BeginForm("UpdateAndAddBlog", "Admin", FormMethod.Post))
-                    {
-                        <form method="post">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Kategori</label>
-                                        @Html.DropDownListFor(m => m.Kategori.kategoriID, (List<SelectListItem>)ViewBag.ktgr, new { @class = "form-control" })
+<html>
+    <head>
+        <script src="~/ckeditor/ckeditor.js"></script>
+    </head>
+    <body>
+        <div class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-user">
+                        <div class="card-header">
+                            <h5 class="card-title">New Blog</h5>
+                        </div>
+                        <div class="card-body">
+                            @using (Html.BeginForm("UpdateAndAddBlog", "Admin", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <form method="post">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Kategori</label>
+                                                @Html.DropDownListFor(m => m.Kategori.kategoriID, (List<SelectListItem>)ViewBag.ktgr, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m=>m.Kategori.kategoriID ,"", new { @style = "color:red" })
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Blog Başlığı</label>
-                                        @Html.TextBoxFor(m => m.MakaleDetay.baslik, new { @class = "form-control" })
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Blog Başlığı</label>
+                                                @Html.TextBoxFor(m => m.MakaleDetay.baslik, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m=>m.MakaleDetay.baslik, "", new { @style = "color:red" })
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Görüntülenme Sayısı</label>
-                                        @Html.TextBoxFor(m => m.MakaleDetay.goruntulenmeSayisi, new { @class = "form-control", @readonly = "readonly" })
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Görüntülenme Sayısı</label>
+                                                @Html.TextBoxFor(m => m.MakaleDetay.goruntulenmeSayisi, new { @class = "form-control", @readonly = "readonly" })
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Yayınlanma Tarihi</label>
-                                        @Html.TextBoxFor(m => m.MakaleDetay.yayınlanmaTarihi, new { @class = "form-control", @readonly = "readonly" })
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Yayınlanma Tarihi</label>
+                                                @Html.TextBoxFor(m => m.MakaleDetay.yayınlanmaTarihi, new { @class = "form-control", @readonly = "readonly" })
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Blog İçeriği</label>
-                                        @Html.TextAreaFor(m => m.MakaleDetay.icerik, new { @class = "ckeditor" ,rows = "10" })
-                                        <script>
-                                        </script>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Blog İçeriği</label>
+                                                @Html.TextAreaFor(m => m.MakaleDetay.icerik, new { @class = "ckeditor", rows = "10" })
+                                                @Html.ValidationMessageFor(m => m.MakaleDetay.icerik, "", new { @style = "color:red" })
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            @Html.HiddenFor(m => m.makaleDetayID)
-                            @Html.HiddenFor(m => m.makaleID)
-                            <div class="row">
-                                <div class="update ml-auto mr-auto">
-                                    <button type="submit" class="btn btn-primary btn-round">ADD / UPDATE BLOG</button>
-                                </div>
-                            </div>
-                        </form>
-                    }
+                                    @Html.HiddenFor(m => m.makaleDetayID)
+                                    @Html.HiddenFor(m => m.makaleID)
+                                    <div class="row">
+                                        <div class="update ml-auto mr-auto">
+                                            <button type="submit" class="btn btn-primary btn-round">ADD / UPDATE BLOG</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-
+    </body>
+</html>

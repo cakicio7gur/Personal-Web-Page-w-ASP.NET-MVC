@@ -11,7 +11,8 @@ namespace PersonalWebSite.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Kategori
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,8 +20,9 @@ namespace PersonalWebSite.Models
         {
             this.Makale = new HashSet<Makale>();
         }
-    
+        [Required(ErrorMessage = "Bir kategori seçmelisiniz!")]
         public int kategoriID { get; set; }
+        [Required(ErrorMessage = "Bir kategori seçmelisiniz!")]
         public string kategori1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

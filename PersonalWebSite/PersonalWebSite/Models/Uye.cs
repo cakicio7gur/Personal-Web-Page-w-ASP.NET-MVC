@@ -11,12 +11,16 @@ namespace PersonalWebSite.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Uye
     {
         public int uyeID { get; set; }
         public Nullable<int> uyeDetayBilgiID { get; set; }
         public Nullable<int> rolID { get; set; }
+
+        [Required(ErrorMessage = "Ad boþ geçilemez!")]
+        [StringLength(50, ErrorMessage = "Adýnýz en az 3 karakter olmalýdýr!", MinimumLength = 3)]
         public string adSoyad { get; set; }
     
         public virtual Rol Rol { get; set; }
