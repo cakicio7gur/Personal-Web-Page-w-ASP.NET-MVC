@@ -4,12 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PWebPageDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PWebPageDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Kategori">
           <Key>
             <PropertyRef Name="kategoriID" />
           </Key>
-          <Property Name="kategoriID" Type="int" Nullable="false" />
+          <Property Name="kategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="kategori" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Makale">
@@ -25,7 +25,7 @@
             <PropertyRef Name="makaleDetayID" />
           </Key>
           <Property Name="makaleDetayID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="baslik" Type="nvarchar" MaxLength="500" />
+          <Property Name="baslik" Type="nvarchar" MaxLength="200" />
           <Property Name="icerik" Type="nvarchar(max)" />
           <Property Name="fotograf" Type="nvarchar" MaxLength="100" />
           <Property Name="yayınlanmaTarihi" Type="date" />
@@ -70,7 +70,7 @@
             <PropertyRef Name="uyeDetayBilgiID" />
           </Key>
           <Property Name="uyeDetayBilgiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="eMail" Type="nvarchar" MaxLength="500" />
+          <Property Name="eMail" Type="nvarchar" MaxLength="200" />
           <Property Name="kullaniciAdi" Type="nvarchar" MaxLength="50" />
           <Property Name="sifre" Type="nvarchar" MaxLength="50" />
           <Property Name="fotograf" Type="nvarchar" MaxLength="500" />
@@ -80,7 +80,7 @@
             <PropertyRef Name="yorumID" />
           </Key>
           <Property Name="yorumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="adSoyad" Type="nvarchar" MaxLength="100" />
+          <Property Name="adSoyad" Type="nvarchar" MaxLength="50" />
           <Property Name="icerik" Type="nvarchar" MaxLength="500" />
           <Property Name="makaleID" Type="int" />
           <Property Name="tarih" Type="date" />
@@ -207,8 +207,7 @@
             <End Role="Yorum" EntitySet="Yorum" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PWebPageDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -236,7 +235,7 @@
             <PropertyRef Name="makaleDetayID" />
           </Key>
           <Property Name="makaleDetayID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="baslik" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="baslik" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="icerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="fotograf" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="yayınlanmaTarihi" Type="DateTime" Precision="0" />
@@ -285,7 +284,7 @@
             <PropertyRef Name="uyeDetayBilgiID" />
           </Key>
           <Property Name="uyeDetayBilgiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="eMail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="eMail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="kullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="fotograf" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -296,7 +295,7 @@
             <PropertyRef Name="yorumID" />
           </Key>
           <Property Name="yorumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="adSoyad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="adSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="icerik" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="makaleID" Type="Int32" />
           <Property Name="tarih" Type="DateTime" Precision="0" />

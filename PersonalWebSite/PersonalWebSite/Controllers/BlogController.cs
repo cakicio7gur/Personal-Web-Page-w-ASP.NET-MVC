@@ -53,10 +53,6 @@ namespace PersonalWebSite.Controllers
             }
             return View("Index", makaleList);
         }
-        public int GetBlogCountAsKategori(int id)
-        {
-            var makaleSayisi = db.Makale.Where(x => x.kategoriID == id).Count();
-            return makaleSayisi;
-        }
+
     }
 }

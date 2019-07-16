@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="kategoriID" />
     </Key>
-    <Property Name="kategoriID" Type="int" Nullable="false" />
+    <Property Name="kategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="kategori" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Makale">
@@ -20,7 +20,7 @@
       <PropertyRef Name="makaleDetayID" />
     </Key>
     <Property Name="makaleDetayID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="baslik" Type="nvarchar" MaxLength="500" />
+    <Property Name="baslik" Type="nvarchar" MaxLength="200" />
     <Property Name="icerik" Type="nvarchar(max)" />
     <Property Name="fotograf" Type="nvarchar" MaxLength="100" />
     <Property Name="yayınlanmaTarihi" Type="date" />
@@ -65,7 +65,7 @@
       <PropertyRef Name="uyeDetayBilgiID" />
     </Key>
     <Property Name="uyeDetayBilgiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="eMail" Type="nvarchar" MaxLength="500" />
+    <Property Name="eMail" Type="nvarchar" MaxLength="200" />
     <Property Name="kullaniciAdi" Type="nvarchar" MaxLength="50" />
     <Property Name="sifre" Type="nvarchar" MaxLength="50" />
     <Property Name="fotograf" Type="nvarchar" MaxLength="500" />
@@ -75,7 +75,7 @@
       <PropertyRef Name="yorumID" />
     </Key>
     <Property Name="yorumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="adSoyad" Type="nvarchar" MaxLength="100" />
+    <Property Name="adSoyad" Type="nvarchar" MaxLength="50" />
     <Property Name="icerik" Type="nvarchar" MaxLength="500" />
     <Property Name="makaleID" Type="int" />
     <Property Name="tarih" Type="date" />

@@ -18,22 +18,31 @@
         <div class="container main-menu">
             <div class="row align-items-center justify-content-between d-flex">
                 <div id="logo">
-                    <a href="/Home/Index"><img src="/Content/img/22_40.png" alt="" title="" /></a>
+                    <a href="/Home/Index"><img src="/Content/img/22_40.png" title="AnaSayfa" /></a>
                 </div>
                 <nav>
                     <ul class="nav-menu">
                         <li><a href="/Home/Index">Ana Sayfa</a></li>
                         <li><a href="/Home/AboutMe">Ben Kimim ?</a></li>
                         <li><a href="/Works/Index">Projelerim</a></li>
-                        <li><a href="/Blog/Index">Keşfet !</a></li>
+                        <li><a href="/Blog/Index">Çalışmalarım</a></li>
 
                         <li><a href="/Home/Contact">Bana Ulaşın</a></li>
                     </ul>
                 </nav>
                 <div class="nav-menu">
-                        <a class="li-ic"><i class="fa fa-2x fa-user"></i></a>
+                    <a class="li-ic"><i class="fa fa-2x fa-user"></i></a>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @HttpContext.Current.User.Identity.Name
+                        <a href="/Security/Logout">ÇIKIŞ YAP</a>
+                    }
+                    else
+                    {
                         <a href="/Security/Login">GİRİŞ YAP</a>
                         <a href="/User/Register"> ÜYE OL</a>
+                    }
+
                 </div>
 
             </div>
@@ -47,7 +56,7 @@
                     <a href="/Home/Contact">MAİL</a></h6>
             </div>
             <div class="row d-flex text-center justify-content-center">
-                <p style="color:#ffffff">cakicozgur@gmail.com</p>
+                <p style="color:#ffffff">cakiciozgur@outlook.com</p>
             </div>
         </div>
         <div class="footer-copyright text-center py-4">

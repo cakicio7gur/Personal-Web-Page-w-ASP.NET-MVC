@@ -24,7 +24,7 @@
       <PropertyRef Name="makaleDetayID" />
     </Key>
     <Property Name="makaleDetayID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="baslik" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="baslik" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="icerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="fotograf" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="yayınlanmaTarihi" Type="DateTime" Precision="0" />
@@ -73,7 +73,7 @@
       <PropertyRef Name="uyeDetayBilgiID" />
     </Key>
     <Property Name="uyeDetayBilgiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="eMail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="eMail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="kullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="fotograf" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -84,7 +84,7 @@
       <PropertyRef Name="yorumID" />
     </Key>
     <Property Name="yorumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="adSoyad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="adSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="icerik" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="makaleID" Type="Int32" />
     <Property Name="tarih" Type="DateTime" Precision="0" />

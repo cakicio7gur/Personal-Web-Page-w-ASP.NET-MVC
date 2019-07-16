@@ -21,32 +21,35 @@ namespace PersonalWebSite.Controllers
             var user = db.Uye.FirstOrDefault(m => m.UyeDetay.kullaniciAdi == model.UyeDetay.kullaniciAdi && m.UyeDetay.sifre == model.UyeDetay.sifre);
             if (user != null)
             {
-                /*FormsAuthentication.SetAuthCookie(user.UyeDetay.kullaniciAdi, false);
+                FormsAuthentication.SetAuthCookie(user.UyeDetay.kullaniciAdi, false);
                 Session["Kullanici"] = user.UyeDetay.kullaniciAdi;
                 Session["Oturum"] = "true";
                 Session["Yetki"] = user.Rol.rol1;
-                Session["UyeId"] = user.uyeID;*/
+                Session["UyeId"] = user.uyeID;   
                 if (user.Rol.rol1 == "Admin")
                 {
                     return RedirectToAction("Index", "Admin");
                 }
                 else
                 {
-
+                    return RedirectToAction("Index", "Home");
                 }
-                return RedirectToAction("Index", "Home");
             }
+            else
+            {
+                ViewBag.mesaj = "Geçersiz Kullanıcı Adı veya Şifre";
                 return View();
+            }
         }
 
-        /*public ActionResult Logout()
+        public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            Session["Kullanici"] = "";
+            Session["Kullanici"] = null;
             Session["Oturum"] = null;
             Session["UyeId"] = null;
             Session["Yetki"] = null;
-            return RedirectToAction("Index", "Makale");
-        }*/
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

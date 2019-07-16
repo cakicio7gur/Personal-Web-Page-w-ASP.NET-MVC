@@ -11,20 +11,12 @@ namespace PersonalWebSite.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Yorum
     {
         public int yorumID { get; set; }
-
-        [Required(ErrorMessage ="Ad Soyad boþ geçilemez!")]
-        [StringLength(100, ErrorMessage = "Ad Soyad en az 3 karakter olmalýdýr!", MinimumLength = 3)]
         public string adSoyad { get; set; }
-
-        [Required(ErrorMessage = "Yorum boþ geçilemez!")]
-        [StringLength(500, ErrorMessage = "Yorumunuz 2-500 karakter aralýðýnda olmalýdýr!", MinimumLength = 2)]
         public string icerik { get; set; }
-
         public Nullable<int> makaleID { get; set; }
         public Nullable<System.DateTime> tarih { get; set; }
     

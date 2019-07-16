@@ -20,30 +20,22 @@ namespace PersonalWebSite.Controllers
         }
 
         [HttpPost]
-        public ActionResult Registration(Uye uye)
+        public ActionResult Register(Uye uye)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                try
-                {
-                    uye.rolID = 2;
-                    uye.UyeDetay.fotograf = "user.png";
-                    db.Uye.Add(uye);
-                    db.SaveChanges();
-                    return RedirectToAction("Login", "Security");
-                }
-                catch
-                {
-                    return RedirectToAction("Register", "User");
-
-                }
+                ViewBag.mesaj = "Kayıt Başarısız!";
+                return RedirectToAction("Register", "User");
             }
             else
             {
+                uye.rolID = 2;
+                uye.UyeDetay.fotograf = "user.png";
+                db.Uye.Add(uye);
+                db.SaveChanges();
+                ViewBag.mesaj = "Kayıt Başarılı!";
                 return RedirectToAction("Register", "User");
-
             }
-
         }
         public ActionResult UserProfile(int id)
         {

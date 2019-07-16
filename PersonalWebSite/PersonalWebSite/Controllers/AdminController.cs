@@ -10,10 +10,10 @@ using PersonalWebSite.Models;
 
 namespace PersonalWebSite.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         Models.PersonalWebPageDBEntities1 db = new Models.PersonalWebPageDBEntities1();
-        
         public ActionResult Index()
         {
             var model = db.Makale.ToList();
@@ -25,7 +25,10 @@ namespace PersonalWebSite.Controllers
             ViewBag.toplamMakaleSayisi = makaleSayisi;
             var yorumSayisi = db.Yorum.Count();
             ViewBag.toplamYorumSayisi = yorumSayisi;
+            var kategoriSayisi = db.Kategori.Count();
+            ViewBag.toplamKategoriSayisi = kategoriSayisi;
             return View(model);
+
         }
 
 
@@ -73,14 +76,13 @@ namespace PersonalWebSite.Controllers
             var UpdateModel = db.Proje.Find(id);
             return View("Works", UpdateModel);
         }
-
         public ActionResult UpdateAndAddWorks(Proje proje)
         {
                 if (proje.projeID == 0)// YENİ KAYIT EKLENECEĞİNDE ÇALIŞIR
                 {
                     db.Proje.Add(proje);
                 }
-                else
+                else // KAYIT GÜNCELLENECEĞİNDE ÇALIŞIR
                 {
                     var Eskimodel = db.Proje.Find(proje.projeID);
                     Eskimodel.projeBaslik = proje.projeBaslik;
@@ -210,5 +212,63 @@ namespace PersonalWebSite.Controllers
                 return RedirectToAction("CommentsList");
             }
         }
+
+
+        //For Kategori
+        public ActionResult Categories()
+        {
+            return View();
+        }
+        public ActionResult CategoryList()
+        {
+            var model = db.Kategori.ToList();
+            return View(model);
+        }
+        public ActionResult GetCategoryDetailByID(int id)
+        {
+            var UpdateModel = db.Kategori.Find(id);
+            return View("Categories", UpdateModel);
+        }
+        public ActionResult UpdateAndAddCategory(Kategori kategori)
+        {
+            if (kategori.kategoriID == 0)// YENİ KAYIT EKLENECEĞİNDE ÇALIŞIR
+            {
+                db.Kategori.Add(kategori);
+            }
+            else  // KAYIT GÜNCELLENECEĞİNDE ÇALIŞIR
+            {
+                var Eskimodel = db.Kategori.Find(kategori.kategoriID);
+                Eskimodel.kategori1 = kategori.kategori1;
+            }
+            db.SaveChanges();
+            return RedirectToAction("CategoryList");
+        }
+        public ActionResult RemoveCategory(int id)
+        {
+            var RemoveCategory = db.Kategori.Find(id);
+            if (RemoveCategory != null)
+            {
+                if(RemoveCategory.Makale.Count==0)
+                {
+                    db.Kategori.Remove(RemoveCategory);
+                    db.SaveChanges();
+                    ViewBag.KategoriHataMesajı = RemoveCategory.kategori1 +" Adlı Kategori Başarıyla Silindi";
+                    return RedirectToAction("CategoryList");
+                }
+                else
+                {
+                    ViewBag.KategoriHataMesajı = "Kategoriye Ait Makale Bulunduğu için Bu Kategori Silinemedi!";
+                    return RedirectToAction("CategoryList");
+                }
+
+            }
+            else
+            {
+                ViewBag.KategoriHataMesajı = "Kategori Silinemedi!";
+                return RedirectToAction("CategoryList");
+            }
+
+        }
+
     }
 }
