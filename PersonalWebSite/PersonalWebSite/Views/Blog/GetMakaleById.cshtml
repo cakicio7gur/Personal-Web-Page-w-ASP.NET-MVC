@@ -55,56 +55,57 @@
                             </p>
                         </div>
                     </div>
-                        <div class="row navigation-area">
+                    <div class="row navigation-area">
                             <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
                                 <div class="thumb">
-                                    <a href="#"><img class="img-fluid" src="~/Content/img/blog/prev.jpg" alt=""></a>
+                                    <a><img class="img-fluid" src="~/Content/img/blog/prev.jpg"></a>
                                 </div>
                                 <div class="arrow">
-                                    <a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
+                                    <a ><span class="lnr text-white lnr-arrow-left"></span></a>
                                 </div>
+
                                 <div class="detials">
                                     <p>Önceki</p>
-                                    <a href="#"><h4>Post Başlığı</h4></a>
+                                    <a><h4>Post Başlığı</h4></a>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
                                 <div class="detials">
                                     <p>Sonraki</p>
-                                    <a href="#"><h4>Post Başlığı</h4></a>
-                                </div>
-                                <div class="arrow">
-                                    <a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
-                                </div>
-                                <div class="thumb">
-                                    <a href="#"><img class="img-fluid" src="~/Content/img/blog/next.jpg" alt=""></a>
-                                </div>
+                                    <a><h4>Post Başlığı</h4></a>
+                                    </div>
+                                    <div class="arrow">
+                                        <a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
+                                    </div>
+                                    <div class="thumb">
+                                        <a><img class="img-fluid" src="~/Content/img/blog/next.jpg" alt=""></a>
+                                    </div>
                             </div>
-                    </div>
-                    <div class="comments-area">
-                        <h4>Yorumlar</h4>
-                        <div class="comment-list">
-                            @foreach (var item in ViewBag.makaleyeAitYorumlar)
-                            {
-                                <div class="single-comment j d-flex">
-                                    <div class="user justify-content-between d-flex">
-                                        <div class="thumb">
-                                            <img src="~/Content/img/blog/c2.jpg" alt="">
-                                        </div>
-                                        <div class="desc">
-                                            <h5><a>@item.adSoyad</a></h5>
-                                            <p class="date">@item.tarih</p>
-                                            <p>
-                                                @item.icerik
-                                            </p>
+                        </div>
+                        <div class="comments-area">
+                            <h4>Yorumlar</h4>
+                            <div class="comment-list">
+                                @foreach (var item in ViewBag.makaleyeAitYorumlar)
+                                {
+                                    <div class="single-comment j d-flex">
+                                        <div class="user justify-content-between d-flex">
+                                            <div class="thumb">
+                                                <img src="~/Content/img/blog/c2.jpg" alt="">
+                                            </div>
+                                            <div class="desc">
+                                                <h5><a>@item.adSoyad</a></h5>
+                                                <p class="date">@item.tarih</p>
+                                                <p>
+                                                    @item.icerik
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            }
+                                }
+                            </div>
                         </div>
-                    </div>
-                    <div class="comment-form">
-                        <h4>Bir Yorum Ekle</h4>
+                        <div class="comment-form">
+                            <h4>Bir Yorum Ekle</h4>
                             <form action="/Yorum/AddComment" method="post">
                                 <div class="form-group">
                                     <div class="form-group">
@@ -118,58 +119,58 @@
                                 @Html.HiddenFor(m => m.makaleID);
                             </form>
                         </div>
-                </div>
-                <div class="col-lg-4 sidebar-widgets">
-                    <div class="widget-wrap">
-                        <div class="single-sidebar-widget popular-post-widget">
-                            <h4 class="popular-title">En Çok Okunanlar</h4>
-                            <div class="popular-post-list">
-                                @foreach (var item in db.Makale.ToList())
-                                {
-                                    if (item.MakaleDetay.goruntulenmeSayisi>=200)
+                    </div>
+                    <div class="col-lg-4 sidebar-widgets">
+                        <div class="widget-wrap">
+                            <div class="single-sidebar-widget popular-post-widget">
+                                <h4 class="popular-title">En Çok Okunanlar</h4>
+                                <div class="popular-post-list">
+                                    @foreach (var item in db.Makale.ToList())
                                     {
-                                    <div class="single-post-list d-flex flex-row align-items-center">
-                                        <div class="thumb">
-                                            <img class="img-fluid" src="img/blog/pp1.jpg" alt="">
-                                        </div>
-                                        <div class="details">
-                                            <a href="/Blog/GetMakaleById/@item.makaleID"><h6>@item.MakaleDetay.baslik</h6></a>
-                                            <p>@item.MakaleDetay.yayınlanmaTarihi.Value.ToString("dd MMMM yyyy")</p>
-                                        </div>
-                                    </div>
+                                        if (item.MakaleDetay.goruntulenmeSayisi >= 200)
+                                        {
+                                            <div class="single-post-list d-flex flex-row align-items-center">
+                                                <div class="thumb">
+                                                    <img class="img-fluid" src="img/blog/pp1.jpg" alt="">
+                                                </div>
+                                                <div class="details">
+                                                    <a href="/Blog/GetMakaleById/@item.makaleID"><h6>@item.MakaleDetay.baslik</h6></a>
+                                                    <p>@item.MakaleDetay.yayınlanmaTarihi.Value.ToString("dd MMMM yyyy")</p>
+                                                </div>
+                                            </div>
+                                        }
                                     }
+                                </div>
+                            </div>
+                            <div class="single-sidebar-widget ads-widget">
+                                <a href="#"><img class="img-fluid" src="~/Content/img/blog/ads-banner.jpg" alt=""></a>
+                            </div>
+                            <div class="single-sidebar-widget post-category-widget">
+                                <h4 class="category-title">Kategoriler</h4>
+                                @foreach (var item in db.Kategori.ToList())
+                                {
+                                    var makaleSayisi = 0;
+                                    foreach (var numbers in db.Makale.ToList())
+                                    {
+                                        if (item.kategoriID == numbers.kategoriID)
+                                        {
+                                            makaleSayisi++;
+                                        }
+                                    }
+                                    <ul class="cat-list">
+                                        <li>
+                                            <a href="/Blog/GetBlogByKategori/@item.kategoriID" class="d-flex justify-content-between">
+                                                <p>@item.kategori1</p>
+                                                <p> @makaleSayisi </p>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 }
                             </div>
-                        </div>
-                        <div class="single-sidebar-widget ads-widget">
-                            <a href="#"><img class="img-fluid" src="~/Content/img/blog/ads-banner.jpg" alt=""></a>
-                        </div>
-                        <div class="single-sidebar-widget post-category-widget">
-                            <h4 class="category-title">Kategoriler</h4>
-                            @foreach (var item in db.Kategori.ToList())
-                            {
-                                var makaleSayisi = 0;
-                                foreach (var numbers in db.Makale.ToList())
-                                {
-                                    if (item.kategoriID == numbers.kategoriID)
-                                    {
-                                        makaleSayisi++;
-                                    }
-                                }
-                                <ul class="cat-list">
-                                    <li>
-                                        <a href="/Blog/GetBlogByKategori/@item.kategoriID" class="d-flex justify-content-between">
-                                            <p>@item.kategori1</p>
-                                            <p> @makaleSayisi </p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            }
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
     <!-- End post-content Area -->
 </body>

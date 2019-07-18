@@ -72,7 +72,7 @@
           <Property Name="uyeDetayBilgiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="eMail" Type="nvarchar" MaxLength="200" />
           <Property Name="kullaniciAdi" Type="nvarchar" MaxLength="50" />
-          <Property Name="sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="sifre" Type="nvarchar" MaxLength="100" />
           <Property Name="fotograf" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Yorum">
@@ -286,7 +286,7 @@
           <Property Name="uyeDetayBilgiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="eMail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="kullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sifre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="fotograf" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Uye" Relationship="Self.FK_Uye_UyeDetay" FromRole="UyeDetay" ToRole="Uye" />
         </EntityType>

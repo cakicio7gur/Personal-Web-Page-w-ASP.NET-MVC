@@ -22,7 +22,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Kategori Adı</label>
-                                            @Html.TextBoxFor(m => m.kategori1, new { @class = "form-control" })
+                                            @Html.TextBoxFor(m => m.kategori1, new { @class = "form-control", MaxLength = 50, MinLenght = 3, required = "required", autofocus = "autofocus" })
                                             @Html.ValidationMessageFor(m => m.kategori1, "", new { @style = "color:red" })
                                         </div>
                                     </div>

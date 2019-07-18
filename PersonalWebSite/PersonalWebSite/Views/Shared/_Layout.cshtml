@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/Content/Admin/assets/img/developer.png">
     <title>Personal WebPage</title>
     <link rel="stylesheet" href="~/Content/css/linearicons.css">
     <link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
@@ -32,15 +33,19 @@
                 </nav>
                 <div class="nav-menu">
                     <a class="li-ic"><i class="fa fa-2x fa-user"></i></a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a href="/Admin/Index">ADMİN PAGE</a>
+                    }
                     @if (User.Identity.IsAuthenticated)
                     {
-                        @HttpContext.Current.User.Identity.Name
+                        <a style="color:#8490FF" href="/User/UserProfile/@Session["UyeID"]">@HttpContext.Current.User.Identity.Name</a>
                         <a href="/Security/Logout">ÇIKIŞ YAP</a>
                     }
                     else
                     {
                         <a href="/Security/Login">GİRİŞ YAP</a>
-                        <a href="/User/Register"> ÜYE OL</a>
+                        <a href="/User/YeniUye"> ÜYE OL</a>
                     }
 
                 </div>

@@ -19,8 +19,8 @@ namespace PersonalWebSite.Security
         public override string[] GetRolesForUser(string username)
         {
             Models.PersonalWebPageDBEntities1 db = new Models.PersonalWebPageDBEntities1();
-            var user = db.Uye.FirstOrDefault(m =>m.UyeDetay.kullaniciAdi==username);
-            return new string[] { user.Rol.rol1 };
+            var kullanici = db.Uye.FirstOrDefault(m => m.UyeDetay.kullaniciAdi == username);
+            return new string[] { kullanici.Rol.rol1 };
         }
 
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)

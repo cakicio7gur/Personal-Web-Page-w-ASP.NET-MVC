@@ -11,11 +11,18 @@ namespace PersonalWebSite.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Proje
     {
         public int projeID { get; set; }
+
+        [Required(ErrorMessage = "Baþlýk boþ geçilemez !")]
+        [StringLength(100, ErrorMessage = "Baþlýk en az 3 karakterden oluþmalýdýr !", MinimumLength = 3)]
         public string projeBaslik { get; set; }
+
+        [Required(ErrorMessage = "Link boþ geçilemez !")]
+        [StringLength(500, ErrorMessage = "Link en fazla 250 karakterden oluþmalýdýr !", MinimumLength = 3)]
         public string projeLink { get; set; }
     }
 }

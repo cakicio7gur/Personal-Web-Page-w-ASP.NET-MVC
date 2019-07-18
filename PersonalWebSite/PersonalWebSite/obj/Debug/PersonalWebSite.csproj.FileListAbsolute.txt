@@ -157,4 +157,3 @@ C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite
 C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\bin\PagedList.Mvc.dll
 C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\bin\PagedList.xml
 C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\bin\PagedList.Mvc.xml
-C:\Users\LENOVO\Documents\GitHub\Personal-Web-Page-w-ASP.NET-MVC\PersonalWebSite\PersonalWebSite\obj\Debug\PersonalWebSite.csprojAssemblyReference.cache

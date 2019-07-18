@@ -11,7 +11,8 @@ namespace PersonalWebSite.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class MakaleDetay
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,8 +22,15 @@ namespace PersonalWebSite.Models
         }
     
         public int makaleDetayID { get; set; }
+
+        [Required(ErrorMessage = "Başlık boş geçilemez !")]
+        [StringLength(200, ErrorMessage = "Başlık en az 3 karakterden oluşmalıdır !", MinimumLength = 3)]
         public string baslik { get; set; }
+
+        [Required(ErrorMessage = "İçerik boş geçilemez !")]
+        [MinLength(3,ErrorMessage = "İçerik en az 3 karakterden oluşmalıdır !")]
         public string icerik { get; set; }
+
         public string fotograf { get; set; }
         public Nullable<System.DateTime> yayınlanmaTarihi { get; set; }
         public Nullable<int> goruntulenmeSayisi { get; set; }

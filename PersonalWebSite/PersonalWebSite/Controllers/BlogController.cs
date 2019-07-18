@@ -53,6 +53,22 @@ namespace PersonalWebSite.Controllers
             }
             return View("Index", makaleList);
         }
+        public ActionResult GetPrevNextMakale(int currentID, bool isOnceki)
+        {
+            if (isOnceki) //Eğer önceki satırı istiyorsak
+            {
+                //Lambda sorgusuyla bulunduğumuz makale id'sinden küçük makalelerden id'ye göre tersten sıralayarak bir önceki makaleyi alıyoruz.
+                var oncekiSatir = db.Makale.Where(i => i.makaleID < currentID).OrderByDescending(o => o.makaleID).Take(1).FirstOrDefault();
+                return RedirectToAction("GetMakaleById",oncekiSatir);
+            }
+            else //Önceki satırı istemiyorsak
+            {
+                //Lambda sorgusuyla bulunduğumuz makale id'sinden büyük hemen sonraki makaleyi alıyoruz.
+                var sonrakiSatir = db.Makale.Where(i => i.makaleID > currentID).Take(1).FirstOrDefault();
+                return RedirectToAction("GetMakaleById", sonrakiSatir);
+            }
+
+        }
 
     }
 }

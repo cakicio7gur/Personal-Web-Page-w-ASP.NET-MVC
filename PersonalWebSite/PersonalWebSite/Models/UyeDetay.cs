@@ -11,7 +11,8 @@ namespace PersonalWebSite.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class UyeDetay
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,9 +22,20 @@ namespace PersonalWebSite.Models
         }
     
         public int uyeDetayBilgiID { get; set; }
+
+        [Required(ErrorMessage = "E-mail boþ geçilemez !")]
+        [EmailAddress(ErrorMessage = "Geçersiz E-mail !")]
         public string eMail { get; set; }
+
+        [Required(ErrorMessage = "Kullanýcý Adý boþ geçilemez !")]
+        [StringLength(16, ErrorMessage = "Kullanýcý Adý 3-16 karakter aralýðýnda olmalýdýr !", MinimumLength = 3)]
+        [RegularExpression("^[A-Za-z0-9ÜÝÖÐÇüiöðç_ ]{0,50}$", ErrorMessage = "Kullanýcý Adý Özel Karakter Ýçermemelidir !")]
         public string kullaniciAdi { get; set; }
+
+        [Required(ErrorMessage = "Þifre boþ geçilemez !")]
+        [StringLength(100, ErrorMessage = "Þifre 6-16 karakter aralýðýnda olmalýdýr !", MinimumLength = 6)]
         public string sifre { get; set; }
+
         public string fotograf { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

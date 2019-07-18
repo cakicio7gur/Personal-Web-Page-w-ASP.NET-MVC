@@ -22,7 +22,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Project Title</label>
-                                            @Html.TextBoxFor(m => m.projeBaslik, new { @class = "form-control" })
+                                            @Html.TextBoxFor(m => m.projeBaslik, new { @class = "form-control", MaxLength = 100, MinLenght = 3, required = "required", autofocus = "autofocus" })
                                             @Html.ValidationMessageFor(m => m.projeBaslik, "", new { @style = "color:red" })
                                         </div>
                                     </div>
@@ -31,7 +31,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Project Link</label>
-                                            @Html.TextBoxFor(m => m.projeLink, new { @class = "form-control" })
+                                            @Html.TextBoxFor(m => m.projeLink, new { @class = "form-control", MaxLength = 250, MinLenght = 3, required = "required", autofocus = "autofocus" })
                                             @Html.ValidationMessageFor(m => m.projeLink, "", new { @style = "color:red" })
                                         </div>
                                     </div>
