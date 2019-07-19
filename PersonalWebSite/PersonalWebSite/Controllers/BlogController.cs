@@ -53,19 +53,33 @@ namespace PersonalWebSite.Controllers
             }
             return View("Index", makaleList);
         }
-        public ActionResult GetPrevNextMakale(int currentID, bool isOnceki)
+        public ActionResult GetPrevNextMakale(int makaleID, bool? getBool)
         {
-            if (isOnceki) //Eğer önceki satırı istiyorsak
+            if (getBool == true) //Eğer önceki satırı istiyorsak
             {
                 //Lambda sorgusuyla bulunduğumuz makale id'sinden küçük makalelerden id'ye göre tersten sıralayarak bir önceki makaleyi alıyoruz.
-                var oncekiSatir = db.Makale.Where(i => i.makaleID < currentID).OrderByDescending(o => o.makaleID).Take(1).FirstOrDefault();
-                return RedirectToAction("GetMakaleById",oncekiSatir);
+                var oncekiSatir = db.Makale.Where(i => i.makaleID < makaleID).OrderByDescending(o => o.makaleID).Take(1).FirstOrDefault();
+                if(oncekiSatir!=null)
+                {
+                    return RedirectToAction("GetMakaleById", new { id = oncekiSatir.makaleID });
+                }
+                else
+                {
+                    return RedirectToAction("GetMakaleById", new { id = makaleID });
+                }
             }
             else //Önceki satırı istemiyorsak
             {
                 //Lambda sorgusuyla bulunduğumuz makale id'sinden büyük hemen sonraki makaleyi alıyoruz.
-                var sonrakiSatir = db.Makale.Where(i => i.makaleID > currentID).Take(1).FirstOrDefault();
-                return RedirectToAction("GetMakaleById", sonrakiSatir);
+                var sonrakiSatir = db.Makale.Where(i => i.makaleID > makaleID).Take(1).FirstOrDefault();
+                if (sonrakiSatir != null)
+                {
+                    return RedirectToAction("GetMakaleById", new { id = sonrakiSatir.makaleID });
+                }
+                else
+                {
+                    return RedirectToAction("GetMakaleById", new { id = makaleID });
+                }
             }
 
         }
