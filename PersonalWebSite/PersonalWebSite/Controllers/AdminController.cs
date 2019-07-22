@@ -17,18 +17,7 @@ namespace PersonalWebSite.Controllers
         public ActionResult Index()
         {
             var model = db.Makale.ToList();
-            var uyeSayisi = db.Uye.Count();
-            ViewBag.toplamUyeSayisi = uyeSayisi;
-            var projeSayisi = db.Proje.Count();
-            ViewBag.toplamProjeSayisi = projeSayisi;
-            var makaleSayisi = db.Makale.Count();
-            ViewBag.toplamMakaleSayisi = makaleSayisi;
-            var yorumSayisi = db.Yorum.Count();
-            ViewBag.toplamYorumSayisi = yorumSayisi;
-            var kategoriSayisi = db.Kategori.Count();
-            ViewBag.toplamKategoriSayisi = kategoriSayisi;
             return View(model);
-
         }
 
 
@@ -37,6 +26,10 @@ namespace PersonalWebSite.Controllers
         {
             var model = db.Uye.ToList();
             return View(model);
+        }
+        public int TotalUsers()
+        {
+            return db.Uye.Count();
         }
         public ActionResult RemoveUser(int id)
         {
@@ -60,11 +53,14 @@ namespace PersonalWebSite.Controllers
 
 
 
-
         // FOR Works
         public ActionResult Works()
         {
             return View();
+        }
+        public int TotalWorks()
+        {
+            return db.Proje.Count();
         }
         public ActionResult WorksList()
         {
@@ -122,6 +118,10 @@ namespace PersonalWebSite.Controllers
             ViewBag.ktgr = kategoriler;
             return View();
         }
+        public int TotalBlogs()
+        {
+            return db.Makale.Count();
+        }
         public ActionResult BlogsList()
         {
             var model = db.Makale.ToList();
@@ -152,6 +152,7 @@ namespace PersonalWebSite.Controllers
                 makale.MakaleDetay.goruntulenmeSayisi = 0;
                 makale.MakaleDetay.fotograf = "blogger.jpg";
                 db.Makale.Add(makale);
+                TempData["makaleEklemeMesaji"] = "Blog Added With Successful";
             }
             else// GÜNCELLEME İŞLEMİ YAPILACAĞINDA ÇALIŞIR
             {
@@ -161,6 +162,7 @@ namespace PersonalWebSite.Controllers
                 Eskimodel.MakaleDetay.yayınlanmaTarihi = makale.MakaleDetay.yayınlanmaTarihi;
                 Eskimodel.MakaleDetay.goruntulenmeSayisi = makale.MakaleDetay.goruntulenmeSayisi;
                 Eskimodel.kategoriID = ktgr.kategoriID;
+                TempData["makaleGuncellemeMesaji"] = "Blog Updated With Successful";
             }
             db.SaveChanges();
             return RedirectToAction("BlogsList");
@@ -197,6 +199,10 @@ namespace PersonalWebSite.Controllers
             var model = db.Yorum.ToList();
             return View(model);
         }
+        public int TotalComments()
+        {
+            return db.Yorum.Count();
+        }
         public ActionResult RemoveComment(int id)
         {
             var RemoveComment = db.Yorum.Find(id);
@@ -218,6 +224,10 @@ namespace PersonalWebSite.Controllers
         public ActionResult Categories()
         {
             return View();
+        }
+        public int TotalCategories()
+        {
+            return db.Kategori.Count();
         }
         public ActionResult CategoryList()
         {

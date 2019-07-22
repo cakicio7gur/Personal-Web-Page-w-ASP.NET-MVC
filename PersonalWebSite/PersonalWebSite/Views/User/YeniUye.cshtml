@@ -23,6 +23,7 @@
         <link rel="stylesheet" href="~/Content/css/animate.min.css">
         <link rel="stylesheet" href="~/Content/css/owl.carousel.css">
         <link rel="stylesheet" href="~/Content/css/main.css">
+        @Styles.Render("~/bundles/sweetalert/css")
     </head>
     <body>
         <header id="header">
@@ -50,7 +51,7 @@
                         @Html.ValidationSummary(true)
                         <form class="form-group" method="post">
                             <div class="form-group col-lg-12s col-md-12">
-                                @Html.TextBoxFor(m => m.adSoyad, new { @class = "form-control", placeholder = "Name", MaxLength=50, MinLenght=3, required = "required", autofocus = "autofocus" })
+                                @Html.TextBoxFor(m => m.adSoyad, new { @class = "form-control", placeholder = "Name", MaxLength = 50, MinLenght = 3, required = "required", autofocus = "autofocus" })
                                 @Html.ValidationMessageFor(m => m.adSoyad, "", new { @style = "color:red" })
                             </div>
                             <div class="form-group col-lg-12 col-md-12">
@@ -59,7 +60,7 @@
 
                             </div>
                             <div class="form-group col-lg-12 col-md-12">
-                                @Html.TextBoxFor(m => m.UyeDetay.eMail, new { @class = "form-control",  placeholder = "Email Adress", required = "required", autofocus = "autofocus" })
+                                @Html.TextBoxFor(m => m.UyeDetay.eMail, new { @class = "form-control", placeholder = "Email Adress", required = "required", autofocus = "autofocus" })
                                 @Html.ValidationMessageFor(m => m.UyeDetay.eMail, "", new { @style = "color:red" })
                             </div>
                             <div class="form-group col-lg-12 col-md-12">
@@ -71,12 +72,24 @@
                                 <a href="~/Security/Login">Giriş Yap</a>
                             </div>
                             @Html.HiddenFor(m => m.uyeDetayBilgiID)
-                            <button type="submit" style="margin-top:10px" class="primary-btn text-uppercase">KAYDOL</button>
+                            <button id="xx" type="submit" style="margin-top:10px" class="primary-btn text-uppercase">KAYDOL</button>
                         </form>
                     }
                 </div>
             </div>
         </section>
+        @if (TempData["kayitMesaji"] != null)
+        {
+            <script type="text/javascript">
+                window.onload = function () {
+                    Swal.fire({
+                        type: 'success',
+                        title: 'Kayıt Başarıyla Tamamlandı',
+                        footer: '<a href="/Security/Login">Hemen Giriş Yap</a>'
+                    })
+                };
+            </script>
+        }
         <script src="~/Content/js/vendor/jquery-2.2.4.min.js"></script>
         <script src="~/Content/js/popper.min.js"></script>
         <script src="~/Content/js/vendor/bootstrap.min.js"></script>
@@ -95,6 +108,7 @@
         <script src="~/Content/js/owl.carousel.min.js"></script>
         <script src="~/Content/js/mail-script.js"></script>
         <script src="~/Content/js/main.js"></script>
+        @Scripts.Render("~/bundles/sweetalert/js")
         <script src="@Url.Content("~/Scripts/jquery-3.4.1.min.js")" type="text/javascript"></script>
         <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
         <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>

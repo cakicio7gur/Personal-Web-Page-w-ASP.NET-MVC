@@ -40,7 +40,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <a style="color:#8490FF" href="/User/UserProfile/@Session["UyeID"]">@HttpContext.Current.User.Identity.Name</a>
-                        <a href="/Security/Logout">ÇIKIŞ YAP</a>
+                        <a href="/Security/Logout" id="logout">ÇIKIŞ YAP</a>
                     }
                     else
                     {
@@ -66,8 +66,8 @@
         </div>
         <div class="footer-copyright text-center py-4">
             <a href="https://github.com/cakicio7gur" target="_blank" class="ins-ic"><i class="fa fa-2x fa-fw fa-github"> </i></a>
-            <a href="https://twitter.com/cakicio7gur" target="_blank" class="li-ic"><i class="fa fa-2x fa-fw fa-linkedin"> </i></a>
-            <a href="https://www.linkedin.com/in/cakicio7gur/" target="_blank" class="tw-ic"><i class="fa fa-2x fa-fw fa-twitter"> </i></a>
+            <a href="https://www.linkedin.com/in/cakicio7gur/" target="_blank" class="li-ic"><i class="fa fa-2x fa-fw fa-linkedin"> </i></a>
+            <a href="https://twitter.com/cakicio7gur" target="_blank" class="tw-ic"><i class="fa fa-2x fa-fw fa-twitter"> </i></a>
             <a href="https://www.instagram.com/cakicio7gur/" target="_blank" class="tw-ic"><i class="fa fa-2x fa-fw fa-instagram"> </i></a>
         </div>
     </footer>

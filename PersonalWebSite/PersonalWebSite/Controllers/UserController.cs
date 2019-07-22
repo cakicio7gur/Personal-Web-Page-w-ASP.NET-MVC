@@ -50,7 +50,8 @@ namespace PersonalWebSite.Controllers
                         uye.UyeDetay.fotograf = "user.png";
                         db.Uye.Add(uye);
                         db.SaveChanges();
-                        return RedirectToAction("Login", "Security");
+                        TempData["kayitMesaji"] = "Kayıt Başarılı!";
+                        return RedirectToAction("YeniUye");
                     }
                     else
                     {

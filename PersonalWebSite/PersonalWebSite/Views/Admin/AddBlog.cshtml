@@ -6,6 +6,9 @@
 <html>
     <head>
         <script src="~/ckeditor/ckeditor.js"></script>
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script src="~/Scripts/bootbox.min.js"></script>
+        <script src="~/Scripts/modernizr-2.8.3.js"></script>
     </head>
     <body>
         <div class="content">
@@ -68,7 +71,7 @@
                                     @Html.HiddenFor(m => m.makaleID)
                                     <div class="row">
                                         <div class="update ml-auto mr-auto">
-                                            <button type="submit" class="btn btn-primary btn-round">ADD / UPDATE BLOG</button>
+                                            <button type="submit" id="btnSave" class="btn btn-primary btn-round">ADD / UPDATE BLOG</button>
                                         </div>
                                     </div>
                                 </form>
