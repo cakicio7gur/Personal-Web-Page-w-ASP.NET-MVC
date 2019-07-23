@@ -2157,6 +2157,14 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   outline: none;
 }
+.nav-menu button {
+    padding: 0 8px 0px 8px;
+    color: white;
+    font-weight: 500;
+    font-size: 12px;
+    border-width: 0px;
+    background-color: #8490ff
+}
 
 .nav-menu li:hover > a {
   color: #8490ff;

@@ -21,6 +21,8 @@
     <!-- Site Title -->
     <title>Personal</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+    @Styles.Render("~/bundles/sweetalert/css")
+    @Scripts.Render("~/bundles/sweetalert/js")
 </head>
 <body>
     <!-- start banner Area -->
@@ -38,6 +40,20 @@
             </div>
         </div>
     </section>
+    @if (TempData["GirisBilgisi"] != null)
+    {
+        <script type="text/javascript">
+                window.onload = function () {
+                    Swal.fire({
+                        position: 'top',
+                        type: 'success',
+                        title: 'Giriş Başarılı',
+                        showConfirmButton: false,
+                        timer: 1250
+                    })
+                };
+        </script>
+    }
 </body>
 </html>
 

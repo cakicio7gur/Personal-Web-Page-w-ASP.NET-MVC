@@ -13,6 +13,13 @@
     <link rel="stylesheet" href="~/Content/css/animate.min.css">
     <link rel="stylesheet" href="~/Content/css/owl.carousel.css">
     <link rel="stylesheet" href="~/Content/css/main.css">
+    <script>
+        function Cikis() {
+            if (confirm("Çıkış yapmak istediğinize emin misiniz?")) {
+                window.location.href = "/Security/Logout";
+            }
+        }
+    </script>
 </head>
 <body>
     <header id="header">
@@ -27,7 +34,6 @@
                         <li><a href="/Home/AboutMe">Ben Kimim ?</a></li>
                         <li><a href="/Works/Index">Projelerim</a></li>
                         <li><a href="/Blog/Index">Çalışmalarım</a></li>
-
                         <li><a href="/Home/Contact">Bana Ulaşın</a></li>
                     </ul>
                 </nav>
@@ -40,7 +46,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <a style="color:#8490FF" href="/User/UserProfile/@Session["UyeID"]">@HttpContext.Current.User.Identity.Name</a>
-                        <a href="/Security/Logout" id="logout">ÇIKIŞ YAP</a>
+                        <a href="#" onclick="return Cikis()">ÇIKIŞ YAP</a>
                     }
                     else
                     {

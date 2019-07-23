@@ -17,7 +17,7 @@
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">MEMBERS</p>
+                                    <p class="card-category">USERS</p>
                                     <p class="card-title">@Html.Action("TotalUsers")
                                     <p>
                                 </div>
@@ -27,7 +27,7 @@
                     <div class="card-footer">
                         <hr>
                         <div class="stats">
-                            <a href="/Admin/Users"><i class="fa fa-user"></i> All Members</a>
+                            <a href="/Admin/Users"><i class="fa fa-user"></i> All Users</a>
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                                 <div class="numbers">
                                     <p class="card-category">PROJECTS</p>
                                     <p class="card-title">@Html.Action("TotalWorks")
-<p>
+                                    <p>
                                 </div>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                                 <div class="numbers">
                                     <p class="card-category">BLOGS</p>
                                     <p class="card-title">@Html.Action("TotalBlogs")
-<p>
+                                    <p>
                                 </div>
                             </div>
                         </div>
@@ -97,7 +97,7 @@
                                 <div class="numbers">
                                     <p class="card-category">COMMENTS</p>
                                     <p class="card-title">@Html.Action("TotalComments")
-<p>
+                                    <p>
                                 </div>
                             </div>
                         </div>
@@ -123,7 +123,7 @@
                                 <div class="numbers">
                                     <p class="card-category">CATEGORİES</p>
                                     <p class="card-title">@Html.Action("TotalCategories")
-<p>
+                                    <p>
                                 </div>
                             </div>
                         </div>
@@ -138,5 +138,19 @@
             </div>
         </div>
     </div>
+    @if (TempData["GirisBilgisi"] != null)
+    {
+        <script type="text/javascript">
+                window.onload = function () {
+                    Swal.fire({
+                        position: 'top',
+                        type: 'success',
+                        title: 'Giriş Başarılı',
+                        showConfirmButton: false,
+                        timer: 1250
+                    })
+                };
+        </script>
+    }
 </body>
 </html>

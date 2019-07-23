@@ -29,7 +29,7 @@ namespace PersonalWebSite.Models
 
         [Required(ErrorMessage = "Kullanýcý Adý boþ geçilemez !")]
         [StringLength(16, ErrorMessage = "Kullanýcý Adý 3-16 karakter aralýðýnda olmalýdýr !", MinimumLength = 3)]
-        [RegularExpression("^[A-Za-z0-9ÜÝÖÐÇüiöðç_ ]{0,50}$", ErrorMessage = "Kullanýcý Adý Özel Karakter Ýçermemelidir !")]
+        [RegularExpression("^[A-Za-z0-9UIOGCSuiogcs_ ]{0,50}$", ErrorMessage = "Kullanýcý Adý Özel Karakter Ýçermemelidir !")]
         public string kullaniciAdi { get; set; }
 
         [Required(ErrorMessage = "Þifre boþ geçilemez !")]

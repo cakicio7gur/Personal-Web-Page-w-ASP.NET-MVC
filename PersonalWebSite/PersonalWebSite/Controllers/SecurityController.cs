@@ -36,10 +36,14 @@ namespace PersonalWebSite.Controllers
                 Session["UyeID"] = user.uyeID;   
                 if (user.Rol.rol1 == "Admin")
                 {
+                    ViewBag.GirisBilgisi = "OK";
+                    TempData["GirisBilgisi"] = "OK";
                     return RedirectToAction("Index", "Admin");
                 }
                 else
                 {
+                    ViewBag.GirisBilgisi = "OK";
+                    TempData["GirisBilgisi"] = "OK";
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -57,6 +61,8 @@ namespace PersonalWebSite.Controllers
             Session["Oturum"] = null;
             Session["UyeID"] = null;
             Session["Yetki"] = null;
+            ViewBag.GirisBilgisi = null;
+            TempData["GirisBilgisi"] = null;
             return RedirectToAction("Index", "Home");
         }
 
